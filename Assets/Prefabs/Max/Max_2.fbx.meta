@@ -1,0 +1,226 @@
+fileFormatVersion: 2
+guid: 58fb5c6c7ea7be246a9451613842b579
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Brazo_Derecho
+    100002: Brazo_Izquierdo
+    100004: Cabello
+    100006: Cabeza
+    100008: Camiseta
+    100010: Cara
+    100012: Ceja_Derecha
+    100014: Ceja_Izquierda
+    100016: Cuerpo
+    100018: Dientes_Inferiores
+    100020: Dientes_Superiores
+    100022: Gorra
+    100024: Lengua
+    100026: //RootNode
+    100028: Ojo_Derecho
+    100030: Ojo_Izquierdo
+    100032: Oreja_Derecha
+    100034: Oreja_Izquierda
+    100036: Pantalon
+    100038: polySurface10
+    100040: polySurface11
+    100042: polySurface4
+    100044: polySurface5
+    100046: polySurface6
+    100048: polySurface9
+    100050: Tobillo_Derecho
+    100052: Tobillo_Izquierdo
+    100054: Zapato_Derecho
+    100056: Zapato_Izquierdo
+    400000: Brazo_Derecho
+    400002: Brazo_Izquierdo
+    400004: Cabello
+    400006: Cabeza
+    400008: Camiseta
+    400010: Cara
+    400012: Ceja_Derecha
+    400014: Ceja_Izquierda
+    400016: Cuerpo
+    400018: Dientes_Inferiores
+    400020: Dientes_Superiores
+    400022: Gorra
+    400024: Lengua
+    400026: //RootNode
+    400028: Ojo_Derecho
+    400030: Ojo_Izquierdo
+    400032: Oreja_Derecha
+    400034: Oreja_Izquierda
+    400036: Pantalon
+    400038: polySurface10
+    400040: polySurface11
+    400042: polySurface4
+    400044: polySurface5
+    400046: polySurface6
+    400048: polySurface9
+    400050: Tobillo_Derecho
+    400052: Tobillo_Izquierdo
+    400054: Zapato_Derecho
+    400056: Zapato_Izquierdo
+    2100000: lambert20
+    2100002: lambert21
+    2300000: Brazo_Derecho
+    2300002: Brazo_Izquierdo
+    2300004: Cabello
+    2300006: Camiseta
+    2300008: Cara
+    2300010: Ceja_Derecha
+    2300012: Ceja_Izquierda
+    2300014: Dientes_Inferiores
+    2300016: Dientes_Superiores
+    2300018: Gorra
+    2300020: Lengua
+    2300022: Ojo_Derecho
+    2300024: Ojo_Izquierdo
+    2300026: Oreja_Derecha
+    2300028: Oreja_Izquierda
+    2300030: Pantalon
+    2300032: polySurface10
+    2300034: polySurface11
+    2300036: polySurface4
+    2300038: polySurface5
+    2300040: polySurface6
+    2300042: polySurface9
+    2300044: Tobillo_Derecho
+    2300046: Tobillo_Izquierdo
+    2300048: Zapato_Derecho
+    2300050: Zapato_Izquierdo
+    3300000: Brazo_Derecho
+    3300002: Brazo_Izquierdo
+    3300004: Cabello
+    3300006: Camiseta
+    3300008: Cara
+    3300010: Ceja_Derecha
+    3300012: Ceja_Izquierda
+    3300014: Dientes_Inferiores
+    3300016: Dientes_Superiores
+    3300018: Gorra
+    3300020: Lengua
+    3300022: Ojo_Derecho
+    3300024: Ojo_Izquierdo
+    3300026: Oreja_Derecha
+    3300028: Oreja_Izquierda
+    3300030: Pantalon
+    3300032: polySurface10
+    3300034: polySurface11
+    3300036: polySurface4
+    3300038: polySurface5
+    3300040: polySurface6
+    3300042: polySurface9
+    3300044: Tobillo_Derecho
+    3300046: Tobillo_Izquierdo
+    3300048: Zapato_Derecho
+    3300050: Zapato_Izquierdo
+    4300000: Gorra
+    4300002: Cabello
+    4300004: Cara
+    4300006: Ojo_Izquierdo
+    4300008: Ceja_Izquierda
+    4300010: Ojo_Derecho
+    4300012: Ceja_Derecha
+    4300014: Dientes_Superiores
+    4300016: Dientes_Inferiores
+    4300018: Oreja_Izquierda
+    4300020: Oreja_Derecha
+    4300022: Lengua
+    4300024: Pantalon
+    4300026: Tobillo_Izquierdo
+    4300028: Zapato_Izquierdo
+    4300030: polySurface4
+    4300032: polySurface5
+    4300034: polySurface6
+    4300036: Tobillo_Derecho
+    4300038: Zapato_Derecho
+    4300040: polySurface9
+    4300042: polySurface10
+    4300044: polySurface11
+    4300046: Camiseta
+    4300048: Brazo_Izquierdo
+    4300050: Brazo_Derecho
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

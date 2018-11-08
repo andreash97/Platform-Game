@@ -1,0 +1,222 @@
+fileFormatVersion: 2
+guid: 157402d0f17cd164da61dbe1d73cbaa9
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Cabeza_Cabello
+    100002: Cabeza_Cara
+    100004: Cabeza_Ceja_Derecha
+    100006: Cabeza_Ceja_Izquierda
+    100008: Cabeza_Dientes_Inferiores
+    100010: Cabeza_Dientes_Superiores
+    100012: Cabeza_Lengua
+    100014: Cabeza_Ojo_Derecho
+    100016: Cabeza_Ojo_Izquierdo
+    100018: Cabeza_Oreja_Derecha
+    100020: Cabeza_Oreja_Izquierda
+    100022: Cuerpo_Brazo_Derecho
+    100024: Cuerpo_Brazo_Izquierdo
+    100026: Cuerpo_Camiseta
+    100028: Cuerpo_polySurface10
+    100030: Cuerpo_polySurface11
+    100032: Cuerpo_polySurface4
+    100034: Cuerpo_polySurface5
+    100036: Cuerpo_polySurface6
+    100038: Cuerpo_polySurface9
+    100040: Cuerpo_Tobillo_Derecho
+    100042: Cuerpo_Tobillo_Izquierdo
+    100044: Cuerpo_Zapato_Derecho
+    100046: Cuerpo_Zapato_Izquierdo
+    100048: Gorra_Cabeza
+    100050: //RootNode
+    100052: Pantalon_Cuerpo
+    400000: Cabeza_Cabello
+    400002: Cabeza_Cara
+    400004: Cabeza_Ceja_Derecha
+    400006: Cabeza_Ceja_Izquierda
+    400008: Cabeza_Dientes_Inferiores
+    400010: Cabeza_Dientes_Superiores
+    400012: Cabeza_Lengua
+    400014: Cabeza_Ojo_Derecho
+    400016: Cabeza_Ojo_Izquierdo
+    400018: Cabeza_Oreja_Derecha
+    400020: Cabeza_Oreja_Izquierda
+    400022: Cuerpo_Brazo_Derecho
+    400024: Cuerpo_Brazo_Izquierdo
+    400026: Cuerpo_Camiseta
+    400028: Cuerpo_polySurface10
+    400030: Cuerpo_polySurface11
+    400032: Cuerpo_polySurface4
+    400034: Cuerpo_polySurface5
+    400036: Cuerpo_polySurface6
+    400038: Cuerpo_polySurface9
+    400040: Cuerpo_Tobillo_Derecho
+    400042: Cuerpo_Tobillo_Izquierdo
+    400044: Cuerpo_Zapato_Derecho
+    400046: Cuerpo_Zapato_Izquierdo
+    400048: Gorra_Cabeza
+    400050: //RootNode
+    400052: Pantalon_Cuerpo
+    2100000: lambert20SG
+    2100002: lambert21SG
+    2300000: Cabeza_Cabello
+    2300002: Cabeza_Cara
+    2300004: Cabeza_Ceja_Derecha
+    2300006: Cabeza_Ceja_Izquierda
+    2300008: Cabeza_Dientes_Inferiores
+    2300010: Cabeza_Dientes_Superiores
+    2300012: Cabeza_Lengua
+    2300014: Cabeza_Ojo_Derecho
+    2300016: Cabeza_Ojo_Izquierdo
+    2300018: Cabeza_Oreja_Derecha
+    2300020: Cabeza_Oreja_Izquierda
+    2300022: Cuerpo_Brazo_Derecho
+    2300024: Cuerpo_Brazo_Izquierdo
+    2300026: Cuerpo_Camiseta
+    2300028: Cuerpo_polySurface10
+    2300030: Cuerpo_polySurface11
+    2300032: Cuerpo_polySurface4
+    2300034: Cuerpo_polySurface5
+    2300036: Cuerpo_polySurface6
+    2300038: Cuerpo_polySurface9
+    2300040: Cuerpo_Tobillo_Derecho
+    2300042: Cuerpo_Tobillo_Izquierdo
+    2300044: Cuerpo_Zapato_Derecho
+    2300046: Cuerpo_Zapato_Izquierdo
+    2300048: Gorra_Cabeza
+    2300050: Pantalon_Cuerpo
+    3300000: Cabeza_Cabello
+    3300002: Cabeza_Cara
+    3300004: Cabeza_Ceja_Derecha
+    3300006: Cabeza_Ceja_Izquierda
+    3300008: Cabeza_Dientes_Inferiores
+    3300010: Cabeza_Dientes_Superiores
+    3300012: Cabeza_Lengua
+    3300014: Cabeza_Ojo_Derecho
+    3300016: Cabeza_Ojo_Izquierdo
+    3300018: Cabeza_Oreja_Derecha
+    3300020: Cabeza_Oreja_Izquierda
+    3300022: Cuerpo_Brazo_Derecho
+    3300024: Cuerpo_Brazo_Izquierdo
+    3300026: Cuerpo_Camiseta
+    3300028: Cuerpo_polySurface10
+    3300030: Cuerpo_polySurface11
+    3300032: Cuerpo_polySurface4
+    3300034: Cuerpo_polySurface5
+    3300036: Cuerpo_polySurface6
+    3300038: Cuerpo_polySurface9
+    3300040: Cuerpo_Tobillo_Derecho
+    3300042: Cuerpo_Tobillo_Izquierdo
+    3300044: Cuerpo_Zapato_Derecho
+    3300046: Cuerpo_Zapato_Izquierdo
+    3300048: Gorra_Cabeza
+    3300050: Pantalon_Cuerpo
+    4300000: Cabeza_Cabello
+    4300002: Cabeza_Cara
+    4300004: Cabeza_Ceja_Derecha
+    4300006: Cabeza_Ceja_Izquierda
+    4300008: Cabeza_Dientes_Inferiores
+    4300010: Cabeza_Dientes_Superiores
+    4300012: Cabeza_Lengua
+    4300014: Cabeza_Ojo_Derecho
+    4300016: Cabeza_Ojo_Izquierdo
+    4300018: Cabeza_Oreja_Derecha
+    4300020: Cabeza_Oreja_Izquierda
+    4300022: Cuerpo_Brazo_Derecho
+    4300024: Cuerpo_Brazo_Izquierdo
+    4300026: Cuerpo_Camiseta
+    4300028: Cuerpo_polySurface10
+    4300030: Cuerpo_polySurface11
+    4300032: Cuerpo_polySurface4
+    4300034: Cuerpo_polySurface5
+    4300036: Cuerpo_polySurface6
+    4300038: Cuerpo_polySurface9
+    4300040: Cuerpo_Tobillo_Derecho
+    4300042: Cuerpo_Tobillo_Izquierdo
+    4300044: Cuerpo_Zapato_Derecho
+    4300046: Cuerpo_Zapato_Izquierdo
+    4300048: Gorra_Cabeza
+    4300050: Pantalon_Cuerpo
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
