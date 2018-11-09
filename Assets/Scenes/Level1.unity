@@ -2104,6 +2104,14 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 100020, guid: 31a2e3634c1cd2f41a1b0bebbc7d4005, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 31a2e3634c1cd2f41a1b0bebbc7d4005, type: 3}
+      propertyPath: m_TagString
+      value: Head
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31a2e3634c1cd2f41a1b0bebbc7d4005, type: 3}
   m_IsPrefabAsset: 0
@@ -2252,7 +2260,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 0.8
+  m_Height: 1.31
   m_Radius: 0.3
   m_SlopeLimit: 45
   m_StepOffset: 0.3

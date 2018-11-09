@@ -24,7 +24,7 @@ public class TurretShoot : MonoBehaviour {
     // Finds player and reads original rotation
     void Awake()
     {
-        player = GameObject.FindWithTag("Player").transform;
+        player = GameObject.FindWithTag("Head").transform;
         originalrot = transform.rotation;
     }
 
@@ -34,7 +34,7 @@ public class TurretShoot : MonoBehaviour {
         if (rotate == true)
         {
 
-            Vector3 dir = player.position - transform.position ;
+            Vector3 dir = player.position - transform.position;
             float angle = Mathf.Atan2(dir.y, dir.z) * Mathf.Rad2Deg;
             Q_rot_from = transform.rotation;
             Q_rot_to = Quaternion.AngleAxis(angle, Vector3.left);
