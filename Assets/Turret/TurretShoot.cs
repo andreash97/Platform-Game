@@ -77,8 +77,7 @@ public class TurretShoot : MonoBehaviour {
     {
         while (true)
         {
-            // Waits to repeate method by set "Fire_rate"
-            yield return new WaitForSeconds(Fire_rate);
+            
             
             
             //Instantiating the bullet.
@@ -97,7 +96,8 @@ public class TurretShoot : MonoBehaviour {
             //Pushes Bullet forward by set Force
             Temporary_RigidBody.velocity = transform.forward * Bullet_Force;  
 
-            
+            // Waits to repeate method by set "Fire_rate"
+            yield return new WaitForSeconds(Fire_rate);
 
         }
         
