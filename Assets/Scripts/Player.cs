@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour {
 
 
-    private float inputDirection;               // X value of our MoveVector
-    private float verticalVelocity;
+    private float inputDirection;               // Z value of our MoveVector
+    private float verticalVelocity;             // Y value of our MoveVector
+    private Vector3 moveVector;
     private bool secondJumpAvail = false;
 
     public Transform player;
@@ -17,8 +18,7 @@ public class Player : MonoBehaviour {
     private float speed = 5.0f;
     private float gravity = 25.0f;
 
-    private CharacterController controller;     // Y value of our MoveVector
-    private Vector3 moveVector;
+    private CharacterController controller;    
     Animator anim;
 	
     
@@ -76,11 +76,11 @@ public class Player : MonoBehaviour {
         Debug.DrawRay(leftRayStart, Vector3.down, Color.red);
         Debug.DrawRay(RightRayStart, Vector3.down, Color.green);
 
-        if (Physics.Raycast(leftRayStart, Vector3.down, (controller.height / 2) + 0.25f))
+        if (Physics.Raycast(leftRayStart, Vector3.down, (controller.height / 2) + 0.1f))
             return true;
 
 
-        if (Physics.Raycast(RightRayStart, Vector3.down, (controller.height / 2) + 0.25f))
+        if (Physics.Raycast(RightRayStart, Vector3.down, (controller.height / 2) + 0.1f))
             return true;
 
         return false;
@@ -88,8 +88,9 @@ public class Player : MonoBehaviour {
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        switch(hit.gameObject.tag)
+        switch (hit.gameObject.tag)
         {
+
             case "Coin":
                 LevelManager.tacosCollected++;
                 Destroy(hit.gameObject);

@@ -2722,13 +2722,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.6
-  m_Radius: 0.3
+  m_Height: 1.72
+  m_Radius: 0.35
   m_SlopeLimit: 45
   m_StepOffset: 0.3
-  m_SkinWidth: 0.2
+  m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.96, z: 0}
+  m_Center: {x: 0, y: 0.88, z: 0}
 --- !u!114 &710681427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5257,6 +5257,10 @@ Prefab:
       propertyPath: m_TagString
       value: Coin
       objectReference: {fileID: 0}
+    - target: {fileID: 1690784026404826, guid: 594d2a5a7ffd9144babfa76187131518, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 594d2a5a7ffd9144babfa76187131518, type: 2}
   m_IsPrefabAsset: 0
@@ -5930,6 +5934,14 @@ Prefab:
     - target: {fileID: 1049669087944602, guid: 60121afd014474a4db3e8adfdd8fcb77, type: 2}
       propertyPath: m_TagString
       value: Turret
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535541196920646, guid: 60121afd014474a4db3e8adfdd8fcb77, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1049669087944602, guid: 60121afd014474a4db3e8adfdd8fcb77, type: 2}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60121afd014474a4db3e8adfdd8fcb77, type: 2}

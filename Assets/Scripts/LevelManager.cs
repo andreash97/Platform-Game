@@ -8,25 +8,12 @@ public class LevelManager : MonoBehaviour {
     public static int lives = 0;
     public static int tacosCollected = 0;
 
-    public Transform spawnPosition;
-
-    public Transform playerTransform;
-
-
-
     // Use this for initialization
     void Start () {
 		
 	}
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Deadly")
-        {
-            playerTransform.transform.position = spawnPosition.transform.position;
-        }
-        
-    }
+    
 
     void OnGUI()
     {

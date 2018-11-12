@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4242112703888790}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: barbwire
   m_TagString: Deadly
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 33160687653373040}
   - component: {fileID: 23572958368041020}
   - component: {fileID: 65442762279302232}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Layer_0
   m_TagString: Deadly
   m_Icon: {fileID: 0}
