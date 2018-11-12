@@ -11,7 +11,6 @@ public class Player : MonoBehaviour {
     private float verticalVelocity;
     private bool secondJumpAvail = false;
 
-
     public Transform player;
     public Transform respawnPoint;
 
@@ -71,17 +70,17 @@ public class Player : MonoBehaviour {
         leftRayStart = controller.bounds.center;
         RightRayStart = controller.bounds.center;
 
-        leftRayStart.x -= controller.bounds.extents.x;
-        RightRayStart.x += controller.bounds.extents.x;
+        leftRayStart.z -= controller.bounds.extents.z;
+        RightRayStart.z += controller.bounds.extents.z;
 
         Debug.DrawRay(leftRayStart, Vector3.down, Color.red);
         Debug.DrawRay(RightRayStart, Vector3.down, Color.green);
 
-        if (Physics.Raycast(leftRayStart, Vector3.down, (controller.height / 2) + 0.6f))
+        if (Physics.Raycast(leftRayStart, Vector3.down, (controller.height / 2) + 0.25f))
             return true;
 
 
-        if (Physics.Raycast(RightRayStart, Vector3.down, (controller.height / 2) + 0.6f))
+        if (Physics.Raycast(RightRayStart, Vector3.down, (controller.height / 2) + 0.25f))
             return true;
 
         return false;
@@ -106,8 +105,8 @@ public class Player : MonoBehaviour {
             player.transform.position = respawnPoint.transform.position;
             LevelManager.lives++;
             Debug.Log("Dead");
-            SceneManager.LoadScene("Menu");
-            
+            SceneManager.LoadScene("DeathScreen");
+
         }
     }
 
