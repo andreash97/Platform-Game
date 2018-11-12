@@ -15,6 +15,7 @@ public class DeathScreen : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene("Level1");
+            LevelManager.tacosCollected = 0;
         }
 
     }
