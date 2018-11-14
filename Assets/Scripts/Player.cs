@@ -31,8 +31,9 @@ public class Player : MonoBehaviour {
     void Update() {
 
         IsControllerGrounded();
-        float inputDirection = -Input.GetAxis("Horizontal") * speed;
+        inputDirection = - Input.GetAxis("Horizontal") * speed;
         Flip(inputDirection);
+
         if (IsControllerGrounded())
         {
             verticalVelocity = 0;

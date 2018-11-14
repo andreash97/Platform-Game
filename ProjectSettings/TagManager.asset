@@ -8,6 +8,8 @@ TagManager:
   - Coin
   - Turret
   - Head
+  - 1
+  - 2
   layers:
   - Default
   - TransparentFX
