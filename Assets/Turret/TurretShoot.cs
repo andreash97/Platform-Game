@@ -35,9 +35,9 @@ public class TurretShoot : MonoBehaviour {
         {
 
             Vector3 dir = player.position - transform.position;
-            float angle = Mathf.Atan2(dir.y, dir.z) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             Q_rot_from = transform.rotation;
-            Q_rot_to = Quaternion.AngleAxis(angle, Vector3.left);
+            Q_rot_to = Quaternion.AngleAxis(angle, Vector3.forward);
             transform.rotation = Quaternion.Lerp(Q_rot_from, Q_rot_to, Time.deltaTime * Rot_Smoothness);
           
         }
@@ -78,8 +78,8 @@ public class TurretShoot : MonoBehaviour {
         while (true)
         {
             
-            
-            
+            // Waits to repeate method by set "Fire_rate"
+             yield return new WaitForSeconds(Fire_rate);
             //Instantiating the bullet.
             GameObject Temporary_Bullet_Handler;    
             Temporary_Bullet_Handler = Instantiate(Bullet, Bullet_Emitter.transform.position, Bullet_Emitter.transform.rotation);
@@ -94,10 +94,10 @@ public class TurretShoot : MonoBehaviour {
             Temporary_Bullet_Handler.transform.Rotate(Vector3.left * 90);
 
             //Pushes Bullet forward by set Force
-            Temporary_RigidBody.velocity = transform.forward * Bullet_Force;  
+            Temporary_RigidBody.velocity = transform.right * Bullet_Force;  
 
-            // Waits to repeate method by set "Fire_rate"
-            yield return new WaitForSeconds(Fire_rate);
+            
+           
 
         }
         

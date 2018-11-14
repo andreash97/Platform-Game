@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMotor : MonoBehaviour {
 
-    private Vector3 offset = new Vector3(-11f, 1, 0);
+    private Vector3 offset = new Vector3(0, 1, -11f);
 
     public Transform lookAt;
 	// Use this for initialization

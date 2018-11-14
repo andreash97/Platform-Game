@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour {
 
 
-    private float inputDirection;               // Z value of our MoveVector
+    private float inputDirection;               // X value of our MoveVector
     private float verticalVelocity;             // Y value of our MoveVector
     private Vector3 moveVector;
     private bool secondJumpAvail = false;
@@ -18,29 +18,29 @@ public class Player : MonoBehaviour {
     private float speed = 5.0f;
     private float gravity = 25.0f;
 
-    private CharacterController controller;    
-    Animator anim;
-	
-    
+    private CharacterController controller;
+    private bool facingleft;
+
     // Use this for initialization
-	void Start () {
+    void Start() {
         controller = GetComponent<CharacterController>();
-        anim = GetComponent<Animator>();
+        facingleft = true;
     }
-	
-	// Update is called once per frame
-	void Update () {
-        
+
+    // Update is called once per frame
+    void Update() {
+
         IsControllerGrounded();
-        inputDirection = Input.GetAxis("Horizontal") * speed;
+        float inputDirection = -Input.GetAxis("Horizontal") * speed;
+        Flip(inputDirection);
         if (IsControllerGrounded())
         {
             verticalVelocity = 0;
-
+            secondJumpAvail = true;
             if (Input.GetKeyDown(KeyCode.W))
             {
                 verticalVelocity = 10;
-                secondJumpAvail = true;
+
             }
         }
         else
@@ -48,16 +48,16 @@ public class Player : MonoBehaviour {
             verticalVelocity -= gravity * Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.W))
             {
-                if(secondJumpAvail)
+                if (secondJumpAvail)
                 {
-                 verticalVelocity = 10;
-                 secondJumpAvail = false;
+                    verticalVelocity = 10;
+                    secondJumpAvail = false;
                 }
-                
+
             }
         }
 
-        moveVector = new Vector3(0, verticalVelocity, inputDirection);
+        moveVector = new Vector3(inputDirection, verticalVelocity, 0);
         controller.Move(moveVector * Time.deltaTime);
 
     }
@@ -70,8 +70,8 @@ public class Player : MonoBehaviour {
         leftRayStart = controller.bounds.center;
         RightRayStart = controller.bounds.center;
 
-        leftRayStart.z -= controller.bounds.extents.z;
-        RightRayStart.z += controller.bounds.extents.z;
+        leftRayStart.x -= controller.bounds.extents.x;
+        RightRayStart.x += controller.bounds.extents.x;
 
         Debug.DrawRay(leftRayStart, Vector3.down, Color.red);
         Debug.DrawRay(RightRayStart, Vector3.down, Color.green);
@@ -110,5 +110,18 @@ public class Player : MonoBehaviour {
 
         }
     }
+
+     private void Flip(float horizontal) // will flip the character when moving from left to right and so on.
+        {
+        if(horizontal > 0 && !facingleft || horizontal < 0 && facingleft)
+        {
+            facingleft = !facingleft;
+            Vector3 thescale = transform.localScale;
+            thescale.z *= -1;
+            transform.localScale = thescale;
+
+        }
+
+        }
 
 }
