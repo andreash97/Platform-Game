@@ -42,7 +42,7 @@ public class PauseMenu : MonoBehaviour
         if (isPaused)
         {
 
-            if (GUI.Button(new Rect(Screen.width / 2 - 60, Screen.height / 2 - 60, 100, 40), "Continue"))
+            if (GUI.Button(new Rect(Screen.width / 2 - 60, Screen.height / 2 - 100, 100, 40), "Continue"))
             {
                 isPaused = false;
                 if (player.isDead == false)
@@ -51,16 +51,20 @@ public class PauseMenu : MonoBehaviour
                 }
             }
 
-            if (GUI.Button(new Rect(Screen.width / 2 - 60, Screen.height / 2 + 00, 100, 40), "Restart"))
+            if (GUI.Button(new Rect(Screen.width / 2 - 60, Screen.height / 2 - 50, 100, 40), "Restart"))
             {
                 isPaused = false;
                 player.transform.position = player.respawnPoint.transform.position;
                 Time.timeScale = 1.0f;
             }
 
-            if (GUI.Button(new Rect(Screen.width / 2 - 60, Screen.height / 2 + 60, 100, 40), "Quit"))
+            if (GUI.Button(new Rect(Screen.width / 2 - 60, Screen.height / 2 + 00, 100, 40), "Quit"))
             {
                 Application.Quit();
+            }
+            if (GUI.Button(new Rect(Screen.width / 2 - 60, Screen.height / 2 + 50, 100, 40), "Menu"))
+            {
+                SceneManager.LoadScene("Menu");
             }
 
         }
