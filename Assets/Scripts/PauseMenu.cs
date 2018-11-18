@@ -64,7 +64,9 @@ public class PauseMenu : MonoBehaviour
             }
             if (GUI.Button(new Rect(Screen.width / 2 - 60, Screen.height / 2 + 50, 100, 40), "Menu"))
             {
+                isPaused = false;
                 SceneManager.LoadScene("Menu");
+                Time.timeScale = 1.0f;
             }
 
         }

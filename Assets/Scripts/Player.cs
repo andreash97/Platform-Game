@@ -23,9 +23,9 @@ public class Player : MonoBehaviour {
     private Animator anim;
     public bool isDead = false;
     public AudioClip JumpSound;
-    public AudioSource MusicSource1;
-    public AudioSource MusicSource2;
-    public AudioSource MusicSource3;
+    public AudioSource JumpVolume;
+    public AudioSource EatVolume;
+    public AudioSource DeathVolume;
     public AudioClip EatSound;
     public AudioClip DeathSound;
 
@@ -36,9 +36,9 @@ public class Player : MonoBehaviour {
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         facingleft = true;
-        MusicSource1.clip = JumpSound;
-        MusicSource2.clip = EatSound;
-        MusicSource3.clip = DeathSound;
+        JumpVolume.clip = JumpSound;
+        EatVolume.clip = EatSound;
+        DeathVolume.clip = DeathSound;
     }
 
     // Update is called once per frame
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.W))
             {
                 verticalVelocity = 10;
-                MusicSource1.Play();
+                JumpVolume.Play();
             }
         }
         else
@@ -75,7 +75,7 @@ public class Player : MonoBehaviour {
                 if (secondJumpAvail)
                 {
                     verticalVelocity = 10;
-                    MusicSource1.Play();
+                    JumpVolume.Play();
                     secondJumpAvail = false;
                     
                 }
@@ -122,9 +122,9 @@ public class Player : MonoBehaviour {
     {
         switch (hit.gameObject.tag)
         {
-            case "Coin":
+            case "Taco":
                 LevelManager.tacosCollected++;
-                MusicSource2.Play();
+                EatVolume.Play();
                 Destroy(hit.gameObject);
                 break;
             default:
@@ -135,7 +135,7 @@ public class Player : MonoBehaviour {
     {
         if (other.tag == "Deadly")
         {
-            MusicSource3.Play();
+            DeathVolume.Play();
             LevelManager.lives++;
 
             Debug.Log("Dead");

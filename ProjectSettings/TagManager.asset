@@ -10,6 +10,7 @@ TagManager:
   - Head
   - 1
   - 2
+  - Taco
   layers:
   - Default
   - TransparentFX
