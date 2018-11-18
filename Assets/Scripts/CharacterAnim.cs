@@ -5,9 +5,11 @@ using UnityEngine;
 public class CharacterAnim : MonoBehaviour {
 
     private Animator anim;
+    
 	// Use this for initialization
 	void Start () {
         anim = GetComponent<Animator>();
+        
 		
 	}
 	
@@ -20,10 +22,11 @@ public class CharacterAnim : MonoBehaviour {
         {
             anim.SetBool("isRunning", false);
         }
-
         if (Input.GetKeyDown(KeyCode.W))
         {
             anim.SetTrigger("jump");
         }
-	}
+
+
+    }
 }

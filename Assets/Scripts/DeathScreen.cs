@@ -27,7 +27,7 @@ public class DeathScreen : MonoBehaviour {
 
     void OnGUI()
     {
-        string respawnText = "OOPS, YOU DIED! \n Press R to retry or M to get to the main menu.";
+       string respawnText = "OOPS, YOU DIED! \n Press R to retry or M to get to the main menu.";
         GUI.Box(new Rect(Screen.width - 685, 100, 300, 50), respawnText);        
         string tacoText = "Total tacos: " + LevelManager.tacosCollected;
         GUI.Box(new Rect(Screen.width - 600, 200, 130, 25), tacoText);

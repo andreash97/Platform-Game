@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
+    
 
     private float inputDirection;               // X value of our MoveVector
     private float verticalVelocity;             // Y value of our MoveVector
     private Vector3 moveVector;
-    private bool secondJumpAvail = false;
-
+    private bool secondJumpAvail;
     public Transform player;
     public Transform respawnPoint;
 
@@ -20,19 +20,41 @@ public class Player : MonoBehaviour {
 
     private CharacterController controller;
     private bool facingleft;
+    private Animator anim;
+    public bool isDead = false;
+    public AudioClip JumpSound;
+    public AudioSource MusicSource1;
+    public AudioSource MusicSource2;
+    public AudioSource MusicSource3;
+    public AudioClip EatSound;
+    public AudioClip DeathSound;
+
+
 
     // Use this for initialization
     void Start() {
         controller = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
         facingleft = true;
+        MusicSource1.clip = JumpSound;
+        MusicSource2.clip = EatSound;
+        MusicSource3.clip = DeathSound;
     }
 
     // Update is called once per frame
     void Update() {
 
         IsControllerGrounded();
-        inputDirection = - Input.GetAxis("Horizontal") * speed;
+        inputDirection = - Input.GetAxisRaw("Horizontal") * speed;
         Flip(inputDirection);
+
+       
+
+        
+
+        if (isDead)
+            Time.timeScale = 0f;
+
 
         if (IsControllerGrounded())
         {
@@ -41,7 +63,7 @@ public class Player : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.W))
             {
                 verticalVelocity = 10;
-
+                MusicSource1.Play();
             }
         }
         else
@@ -49,10 +71,13 @@ public class Player : MonoBehaviour {
             verticalVelocity -= gravity * Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.W))
             {
+               
                 if (secondJumpAvail)
                 {
                     verticalVelocity = 10;
+                    MusicSource1.Play();
                     secondJumpAvail = false;
+                    
                 }
 
             }
@@ -78,11 +103,17 @@ public class Player : MonoBehaviour {
         Debug.DrawRay(RightRayStart, Vector3.down, Color.green);
 
         if (Physics.Raycast(leftRayStart, Vector3.down, (controller.height / 2) + 0.1f))
-            return true;
+        {
+             return true;
+        }
+            
 
 
         if (Physics.Raycast(RightRayStart, Vector3.down, (controller.height / 2) + 0.1f))
+        {
             return true;
+        }
+            
 
         return false;
     }
@@ -91,9 +122,9 @@ public class Player : MonoBehaviour {
     {
         switch (hit.gameObject.tag)
         {
-
             case "Coin":
                 LevelManager.tacosCollected++;
+                MusicSource2.Play();
                 Destroy(hit.gameObject);
                 break;
             default:
@@ -104,17 +135,19 @@ public class Player : MonoBehaviour {
     {
         if (other.tag == "Deadly")
         {
-            player.transform.position = respawnPoint.transform.position;
+            MusicSource3.Play();
             LevelManager.lives++;
+
             Debug.Log("Dead");
-            SceneManager.LoadScene("DeathScreen");
+            isDead = true;
+
 
         }
     }
 
      private void Flip(float horizontal) // will flip the character when moving from left to right and so on.
         {
-        if(horizontal > 0 && !facingleft || horizontal < 0 && facingleft)
+        if (horizontal > 0 && !facingleft && Time.timeScale == 1.0f || horizontal < 0 && facingleft && Time.timeScale == 1.0f) // using timescale to prevent fliping character while dead or pause
         {
             facingleft = !facingleft;
             Vector3 thescale = transform.localScale;
@@ -124,5 +157,25 @@ public class Player : MonoBehaviour {
         }
 
         }
-
+    void OnGUI()
+    {
+        if (isDead)
+        {
+            
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                player.transform.position = respawnPoint.transform.position;
+                LevelManager.tacosCollected = 0;
+                Time.timeScale = 1.0f;
+                isDead = false;
+               
+            }
+            string respawnText = "OOPS, YOU DIED! \n Press R to retry or M to get to the main menu.";
+            GUI.Box(new Rect(Screen.width - 685, 100, 300, 50), respawnText);
+            string tacoText = "Total tacos: " + LevelManager.tacosCollected;
+            GUI.Box(new Rect(Screen.width - 600, 200, 130, 25), tacoText);
+            string livesText = "Lives spent: " + LevelManager.lives;
+            GUI.Box(new Rect(Screen.width - 600, 270, 130, 25), livesText);
+        }
+        }
 }
