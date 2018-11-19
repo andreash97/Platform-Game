@@ -169,7 +169,7 @@ ModelImporter:
     4300002: h_Geo
     4300004: Boy01_Eyes_Geo
     4300006: Boy01_Brows_Geo
-    7400000: Jumping
+    7400000: Landing
     9500000: //RootNode
     13700000: Boy01_Body_Geo
     13700002: Boy01_Brows_Geo
@@ -204,9 +204,9 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Jumping
+      name: Landing
       takeName: mixamo.com
-      firstFrame: 0
+      firstFrame: 23
       lastFrame: 45
       wrapMode: 0
       orientationOffsetY: 0
@@ -275,7 +275,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1

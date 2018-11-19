@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
-    
+
 
     private float inputDirection;               // X value of our MoveVector
     private float verticalVelocity;             // Y value of our MoveVector
@@ -45,12 +45,12 @@ public class Player : MonoBehaviour {
     void Update() {
 
         IsControllerGrounded();
-        inputDirection = - Input.GetAxisRaw("Horizontal") * speed;
+        inputDirection = -Input.GetAxisRaw("Horizontal") * speed;
         Flip(inputDirection);
-
-       
+        HandleLayers();
 
         
+
 
         if (isDead)
             Time.timeScale = 0f;
@@ -71,20 +71,25 @@ public class Player : MonoBehaviour {
             verticalVelocity -= gravity * Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.W))
             {
-               
+
                 if (secondJumpAvail)
                 {
                     verticalVelocity = 10;
                     JumpVolume.Play();
                     secondJumpAvail = false;
-                    
+
                 }
 
             }
         }
-
+        float verticalSpeed = controller.velocity.y;
+        if (verticalSpeed < 0){
+            anim.SetBool("landing", true);
+        }
+        
         moveVector = new Vector3(inputDirection, verticalVelocity, 0);
         controller.Move(moveVector * Time.deltaTime);
+        anim.SetFloat("speed", Mathf.Abs(inputDirection));
 
     }
 
@@ -104,16 +109,19 @@ public class Player : MonoBehaviour {
 
         if (Physics.Raycast(leftRayStart, Vector3.down, (controller.height / 2) + 0.1f))
         {
-             return true;
-        }
+            anim.SetBool("landing", false);
+            return true; 
             
+        }
+
 
 
         if (Physics.Raycast(RightRayStart, Vector3.down, (controller.height / 2) + 0.1f))
         {
+            anim.SetBool("landing", false);
             return true;
         }
-            
+
 
         return false;
     }
@@ -145,8 +153,8 @@ public class Player : MonoBehaviour {
         }
     }
 
-     private void Flip(float horizontal) // will flip the character when moving from left to right and so on.
-        {
+    private void Flip(float horizontal) // will flip the character when moving from left to right and so on.
+    {
         if (horizontal > 0 && !facingleft && Time.timeScale == 1.0f || horizontal < 0 && facingleft && Time.timeScale == 1.0f) // using timescale to prevent fliping character while dead or pause
         {
             facingleft = !facingleft;
@@ -156,19 +164,19 @@ public class Player : MonoBehaviour {
 
         }
 
-        }
+    }
     void OnGUI()
     {
         if (isDead)
         {
-            
+
             if (Input.GetKeyDown(KeyCode.R))
             {
                 player.transform.position = respawnPoint.transform.position;
                 LevelManager.tacosCollected = 0;
                 Time.timeScale = 1.0f;
                 isDead = false;
-               
+
             }
             string respawnText = "OOPS, YOU DIED! \n Press R to retry or M to get to the main menu.";
             GUI.Box(new Rect(Screen.width - 685, 100, 300, 50), respawnText);
@@ -177,5 +185,22 @@ public class Player : MonoBehaviour {
             string livesText = "Lives spent: " + LevelManager.lives;
             GUI.Box(new Rect(Screen.width - 600, 270, 130, 25), livesText);
         }
+    }
+
+    private void HandleLayers(){
+
+        if (!IsControllerGrounded())
+        {
+
+            anim.SetLayerWeight(1, 1);
         }
+        else {
+
+            anim.SetLayerWeight(1, 0); 
+
+
+        }
+
+
+    }
 }
