@@ -2181,7 +2181,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1129634768690226}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 5.3, y: 0.9, z: -2.08}
+  m_LocalPosition: {x: 8.32, y: 10.85, z: -2.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4634741620256884}
@@ -2370,6 +2370,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 4891254206099500}
   respawnPoint: {fileID: 0}
+  isDead: 0
+  JumpSound: {fileID: 8300000, guid: 3724648daeb4bc74db9cc0e137825927, type: 3}
+  JumpVolume: {fileID: 0}
+  EatVolume: {fileID: 0}
+  DeathVolume: {fileID: 0}
+  EatSound: {fileID: 8300000, guid: 3f05f6f7dfb05964fb8f0a242f3113dd, type: 3}
+  DeathSound: {fileID: 8300000, guid: bc6a5d886c065214d96720a022c7a963, type: 3}
 --- !u!137 &137039758289154676
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
