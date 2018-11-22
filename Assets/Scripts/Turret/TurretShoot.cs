@@ -15,6 +15,8 @@ public class TurretShoot : MonoBehaviour {
     // Rotation 
     
     public float Rot_Smoothness;
+    public Transform partToRotate;
+    public bool enablerotate;
     private Quaternion originalrot;
     private Transform player;
     private Quaternion Q_rot_from;
@@ -25,28 +27,29 @@ public class TurretShoot : MonoBehaviour {
     void Awake()
     {
         player = GameObject.FindWithTag("Head").transform;
-        originalrot = transform.rotation;
+        originalrot = partToRotate.rotation;
+        
     }
 
     void Update()
     {
          // Rotates the turret towards the player.
-        if (rotate == true)
+        if (rotate == true && enablerotate == true)
         {
 
             Vector3 dir = player.position - transform.position;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            Q_rot_from = transform.rotation;
+            Q_rot_from = partToRotate.rotation;
             Q_rot_to = Quaternion.AngleAxis(angle, Vector3.forward);
-            transform.rotation = Quaternion.Lerp(Q_rot_from, Q_rot_to, Time.deltaTime * Rot_Smoothness);
+            partToRotate.rotation = Quaternion.Lerp(Q_rot_from, Q_rot_to, Time.deltaTime * Rot_Smoothness);
           
         }
         // Rotates the turret back to original rotation
-        if (rotate == false)
+        if (rotate == false && enablerotate == true)
         {
             
-            Q_rot_from = transform.rotation;
-            transform.rotation = Quaternion.Lerp(Q_rot_from, originalrot, Time.deltaTime * Rot_Smoothness);
+            Q_rot_from = partToRotate.rotation;
+            partToRotate.rotation = Quaternion.Lerp(Q_rot_from, originalrot, Time.deltaTime * Rot_Smoothness);
         }
        
 
@@ -94,7 +97,7 @@ public class TurretShoot : MonoBehaviour {
             Temporary_Bullet_Handler.transform.Rotate(Vector3.left * 90);
 
             //Pushes Bullet forward by set Force
-            Temporary_RigidBody.velocity = transform.right * Bullet_Force;  
+            Temporary_RigidBody.velocity = partToRotate.right * Bullet_Force;  
 
             
            

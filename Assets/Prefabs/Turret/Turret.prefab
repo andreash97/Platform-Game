@@ -212,3 +212,5 @@ MonoBehaviour:
   Bullet_Force: 10
   Fire_rate: 2
   Rot_Smoothness: 5
+  partToRotate: {fileID: 0}
+  enablerotate: 0
