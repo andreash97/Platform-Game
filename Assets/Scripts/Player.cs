@@ -48,6 +48,7 @@ public class Player : MonoBehaviour {
         Instantiate(Taco, new Vector3(-37.84f, 3.74f, -1), Quaternion.identity);
         Instantiate(Taco, new Vector3(-39.1f, 23.44f, -1), Quaternion.identity);
         Instantiate(Taco, new Vector3(-18.26f, 1.7f, -1), Quaternion.identity);
+        Instantiate(Taco, new Vector3(4.5f, 57, -1), Quaternion.identity);
 
     }
 
@@ -255,6 +256,7 @@ public class Player : MonoBehaviour {
                 Instantiate(Taco, new Vector3(-37.84f, 3.74f, -1), Quaternion.identity);
                 Instantiate(Taco, new Vector3(-39.1f, 23.44f, -1), Quaternion.identity);
                 Instantiate(Taco, new Vector3(-18.26f, 1.7f, -1), Quaternion.identity);
+                Instantiate(Taco, new Vector3(4.5f, 57, -1), Quaternion.identity);
                 LevelManager.tacosCollected = 0;
                 Time.timeScale = 1.0f;
                 isDead = false;
