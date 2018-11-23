@@ -37,7 +37,7 @@ public class TurretShoot : MonoBehaviour {
         if (rotate == true && enablerotate == true)
         {
 
-            Vector3 dir = player.position - transform.position;
+            Vector3 dir = player.position - partToRotate.position;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             Q_rot_from = partToRotate.rotation;
             Q_rot_to = Quaternion.AngleAxis(angle, Vector3.forward);

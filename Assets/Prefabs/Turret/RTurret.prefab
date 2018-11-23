@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 114539434985120306}
   - component: {fileID: 65109730534264510}
   m_Layer: 2
-  m_Name: RTurret Right
+  m_Name: RTurret
   m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -461,7 +461,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 40, y: 40, z: 40}
+  m_Size: {x: 80, y: 40, z: 20}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95961383440711752
 Animator:
@@ -498,7 +498,7 @@ MonoBehaviour:
   Fire_rate: 2
   Rot_Smoothness: 3
   partToRotate: {fileID: 4695813992059980}
-  enablerotate: 0
+  enablerotate: 1
 --- !u!137 &137081850391544518
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
