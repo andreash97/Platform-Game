@@ -31,7 +31,7 @@ public class Player : MonoBehaviour {
     public AudioClip DeathSound;
     private float pressJump;
     private float groundedtimer;
-    private bool landingTrigger;
+    float verticalSpeed;
 
 
     // Use this for initialization
@@ -49,22 +49,20 @@ public class Player : MonoBehaviour {
         Instantiate(Taco, new Vector3(-39.1f, 23.44f, -1), Quaternion.identity);
         Instantiate(Taco, new Vector3(-18.26f, 1.7f, -1), Quaternion.identity);
         Instantiate(Taco, new Vector3(4.5f, 57, -1), Quaternion.identity);
+        Instantiate(Taco, new Vector3(-4.33f, 28.19f, -1), Quaternion.identity);
 
     }
 
     // Update is called once per frame
     void Update() {
-       
 
         IsControllerGrounded();
         inputDirection = -Input.GetAxisRaw("Horizontal") * speed;
         Flip(inputDirection);
         HandleLayers();
+        verticalSpeed = controller.velocity.y;
 
 
-        if (landingTrigger == true) { 
-        Checklanding();
-        }
 
 
 
@@ -84,22 +82,18 @@ public class Player : MonoBehaviour {
             
         }
 
-        if (groundedtimer > 0)
-        {
-            landingTrigger = false;
-            anim.SetBool("landing", false);
-
-        }
+       
 
 
         if (groundedtimer >0) 
         {
-           
+            anim.ResetTrigger("fallingjump");
+            anim.ResetTrigger("firstjump");
             verticalVelocity = 0;
             secondJumpAvail = true;
             if (pressJump > 0 && (groundedtimer >0))
             {
-                landingTrigger = true;
+                anim.SetTrigger("firstjump");
                 groundedtimer = 0;
                 anim.SetFloat("groundedtimer", 0);
                 pressJump = 0;
@@ -116,6 +110,7 @@ public class Player : MonoBehaviour {
                 if (secondJumpAvail)
                 {
                     verticalVelocity = 10;
+                    anim.SetTrigger("fallingjump");
                     JumpVolume.Play();
                     secondJumpAvail = false;
 
@@ -130,32 +125,11 @@ public class Player : MonoBehaviour {
 
     }
 
-    private void Checklanding()
-    {
-        
 
-        if (Physics.Raycast(transform.position, Vector3.down, (controller.height / 2) + 0.1f))
-        {
-            
-            anim.SetBool("landing" , true);
-            
-
-        }
-
-
-
-        if (Physics.Raycast(transform.position, Vector3.down, (controller.height / 2) + 0.1f))
-        {
-
-          
-            anim.SetBool("landing", true);
-
-
-        }
 
 
        
-    }
+    
 
     private bool IsControllerGrounded()
     {
@@ -257,7 +231,15 @@ public class Player : MonoBehaviour {
                 Instantiate(Taco, new Vector3(-39.1f, 23.44f, -1), Quaternion.identity);
                 Instantiate(Taco, new Vector3(-18.26f, 1.7f, -1), Quaternion.identity);
                 Instantiate(Taco, new Vector3(4.5f, 57, -1), Quaternion.identity);
+                Instantiate(Taco, new Vector3(-4.33f, 28.19f, -1), Quaternion.identity);
                 LevelManager.tacosCollected = 0;
+                Time.timeScale = 1.0f;
+                isDead = false;
+
+            }
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                SceneManager.LoadScene("Menu");
                 Time.timeScale = 1.0f;
                 isDead = false;
 

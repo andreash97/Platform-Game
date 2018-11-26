@@ -69,6 +69,7 @@ public class PauseMenu : MonoBehaviour
                 Instantiate(player.Taco, new Vector3(-39.1f, 23.44f, -1), Quaternion.identity);
                 Instantiate(player.Taco, new Vector3(-18.26f, 1.7f, -1), Quaternion.identity);
                 Instantiate(player.Taco, new Vector3(4.5f, 57, -1), Quaternion.identity);
+                Instantiate(player.Taco, new Vector3(-4.33f, 28.19f, -1), Quaternion.identity);
                 Time.timeScale = 1.0f;
             }
 
