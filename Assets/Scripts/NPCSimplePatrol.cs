@@ -28,10 +28,13 @@ public class NPCSimplePatrol : MonoBehaviour
     bool _waiting;
     bool _patrolForward;
     float _waitTimer;
-
+    Player player;
+    private Vector3 originalposition;
     // Use this for initialization
+
     public void Start()
     {
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
         _navMeshAgent = this.GetComponent<NavMeshAgent>();
 
         if (_navMeshAgent == null)
@@ -52,9 +55,21 @@ public class NPCSimplePatrol : MonoBehaviour
 
         }
     }
+    private void Awake()
+    {
+        originalposition = transform.position;
+    }
+
 
     public void Update()
     {
+
+        // reset the position of the guard when player dies.
+        if (player.isDead == true)
+        {
+             transform.position = originalposition;
+        }
+
         //Check if we're close to the destination.
         if (_travelling && _navMeshAgent.remainingDistance <= 1.0f)
         {
@@ -101,6 +116,7 @@ public class NPCSimplePatrol : MonoBehaviour
     /// Selects a new patrol point in the available list, but
     /// also with a small probability allows for us to move forward or backwards.
     /// </summary>
+    /// 
     private void ChangePatrolPoint()
     {
         if (UnityEngine.Random.Range(0f, 1f) <= _switchProbability)
