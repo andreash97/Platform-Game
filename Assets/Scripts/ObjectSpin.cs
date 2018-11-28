@@ -12,7 +12,7 @@ public class ObjectSpin : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         transform.Rotate(new Vector3(Time.deltaTime * 0, -5, 0));
     }
 }

@@ -32,7 +32,7 @@ public class Player : MonoBehaviour {
     public AudioClip DeathSound;
     private float pressJump;
     private float groundedtimer;
-    float verticalSpeed;
+
     
   
 
@@ -69,7 +69,7 @@ public class Player : MonoBehaviour {
         inputDirection = -Input.GetAxisRaw("Horizontal") * speed;
         Flip(inputDirection);
         HandleLayers();
-        verticalSpeed = controller.velocity.y;
+
 
 
 
@@ -103,9 +103,9 @@ public class Player : MonoBehaviour {
             secondJumpAvail = true;
             if (pressJump > 0 && (groundedtimer >0))
             {
+                anim.SetFloat("groundedtimer", 0);
                 anim.SetTrigger("firstjump");
                 groundedtimer = 0;
-                anim.SetFloat("groundedtimer", 0);
                 pressJump = 0;
                 verticalVelocity = 10;
                 JumpVolume.Play();
@@ -119,6 +119,7 @@ public class Player : MonoBehaviour {
 
                 if (secondJumpAvail)
                 {
+                    anim.SetFloat("groundedtimer", 0);
                     verticalVelocity = 10;
                     anim.SetTrigger("fallingjump");
                     JumpVolume.Play();
