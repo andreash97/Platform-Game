@@ -30,12 +30,20 @@ public class NPCSimplePatrol : MonoBehaviour
     float _waitTimer;
     Player player;
     private Vector3 originalposition;
+    private IEnumerator coroutine;
     // Use this for initialization
+
+    private void Awake()
+    {
+
+        originalposition = transform.position;
+    }
 
     public void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
         _navMeshAgent = this.GetComponent<NavMeshAgent>();
+
 
         if (_navMeshAgent == null)
         {
@@ -55,21 +63,23 @@ public class NPCSimplePatrol : MonoBehaviour
 
         }
     }
-    private void Awake()
+
+    void LateUpdate()
     {
-        originalposition = transform.position;
+        if (player.NPCRestart == true)
+        {
+            player.NPCRestart = false;
+        }
     }
 
-
-    public void Update()
+    void Update()
     {
 
         // reset the position of the guard when player dies.
-        if (player.isDead == true)
+        if (player.NPCRestart == true)
         {
-             transform.position = originalposition;
+            RestartNPC();
         }
-
         //Check if we're close to the destination.
         if (_travelling && _navMeshAgent.remainingDistance <= 1.0f)
         {
@@ -136,4 +146,12 @@ public class NPCSimplePatrol : MonoBehaviour
             }
         }
     }
+    void RestartNPC()
+    {
+
+        transform.position = originalposition;
+        
+    }
 }
+
+    

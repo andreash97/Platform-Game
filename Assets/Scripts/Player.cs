@@ -8,8 +8,8 @@ public class Player : MonoBehaviour {
 
 
 
-    private float inputDirection;               // X value of our MoveVector
-    private float verticalVelocity;             // Y value of our MoveVector
+    private float inputDirection;  // X component of the vector 
+    private float verticalVelocity;  // Y component of the vector
     private Vector3 moveVector;
     private bool secondJumpAvail;
     public Transform player;
@@ -30,8 +30,13 @@ public class Player : MonoBehaviour {
     public AudioSource DeathVolume;
     public AudioClip EatSound;
     public AudioClip DeathSound;
+    public bool NPCRestart;
+    public static int savedtacos;
     private float pressJump;
     private float groundedtimer;
+    
+    
+    
 
     
   
@@ -63,7 +68,7 @@ public class Player : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    public void Update() {
 
         IsControllerGrounded();
         inputDirection = -Input.GetAxisRaw("Horizontal") * speed;
@@ -72,7 +77,7 @@ public class Player : MonoBehaviour {
 
 
 
-
+        
 
 
         if (isDead)
@@ -83,7 +88,7 @@ public class Player : MonoBehaviour {
 
 
         groundedtimer -= Time.deltaTime; // makes it so that edge jumping is smoother by making you grounded alittle longer than in reality.
-        pressJump -= Time.deltaTime; // makes it so that if you press jump button right before landing you will infact jump.
+        pressJump -= Time.deltaTime;    // makes it so that if you press jump button right before landing you will infact jump.
 
 
         if (Input.GetKeyDown(KeyCode.W))
@@ -101,7 +106,7 @@ public class Player : MonoBehaviour {
             anim.ResetTrigger("firstjump");
             verticalVelocity = 0;
             secondJumpAvail = true;
-            if (pressJump > 0 && (groundedtimer >0))
+            if (pressJump > 0)
             {
                 anim.SetFloat("groundedtimer", 0);
                 anim.SetTrigger("firstjump");
@@ -123,6 +128,8 @@ public class Player : MonoBehaviour {
                     verticalVelocity = 10;
                     anim.SetTrigger("fallingjump");
                     JumpVolume.Play();
+                    groundedtimer = 0;
+                    pressJump = 0;
                     secondJumpAvail = false;
 
                 }
@@ -217,39 +224,21 @@ public class Player : MonoBehaviour {
         }
 
     }
+    
+    
+
+
     void OnGUI()
-    {
+    {   
+
         var centeredStyle = GUI.skin.GetStyle("Label");
         centeredStyle.alignment = TextAnchor.UpperCenter;
         if (isDead)
         {
-            var clones = GameObject.FindGameObjectsWithTag("Taco");
-            foreach (var clone in clones)
-            {
-                Destroy(clone);
-            }
             if (Input.GetKeyDown(KeyCode.R))
             {
-                player.transform.position = respawnPoint.transform.position;
-                Scene currentScene = SceneManager.GetActiveScene();
-                if (currentScene.name == "Level design template")
-                {
-                    Instantiate(Taco, new Vector3(12, 0, -1), Quaternion.identity);
-                    Instantiate(Taco, new Vector3(-9.85f, 7.96f, -1), Quaternion.identity);
-                    Instantiate(Taco, new Vector3(12.13f, 12.07f, -1), Quaternion.identity);
-                    Instantiate(Taco, new Vector3(-37.84f, 3.74f, -1), Quaternion.identity);
-                    Instantiate(Taco, new Vector3(-39.1f, 23.44f, -1), Quaternion.identity);
-                    Instantiate(Taco, new Vector3(-18.26f, 1.7f, -1), Quaternion.identity);
-                    Instantiate(Taco, new Vector3(4.5f, 57, -1), Quaternion.identity);
-                    Instantiate(Taco, new Vector3(-4.33f, 28.19f, -1), Quaternion.identity);
-                    Instantiate(Taco, new Vector3(-7.96f, 51.28f, -1), Quaternion.identity);
-                    
-                }
-                LevelManager.tacosCollected = 0;
-                Time.timeScale = 1.0f;
-                isDead = false;
+                Restart();
                 
-
             }
             if (Input.GetKeyDown(KeyCode.M))
             {
@@ -262,9 +251,48 @@ public class Player : MonoBehaviour {
             GUI.Box(new Rect(Screen.width/2 - 65, Screen.height/2 - 100, 130, 25), tacoText);
             string livesText = "Lives spent: " + LevelManager.lives;
             GUI.Box(new Rect(Screen.width/2 - 65, Screen.height/2 - 0, 130, 25), livesText);
+            
+           
         }
     }
-
+    public void Restart()
+    {
+        player.transform.position = respawnPoint.transform.position;
+        LevelManager.tacosCollected = savedtacos;
+        isDead = false;
+        secondJumpAvail = false;
+        NPCRestart = true;
+        verticalVelocity = 0;
+        groundedtimer = 0;
+        Time.timeScale = 1.0f;
+        anim.SetTrigger("restart");
+        Scene currentScene = SceneManager.GetActiveScene();
+         if (!facingleft)
+        {
+            facingleft = !facingleft;
+            Vector3 thescale = transform.localScale;
+            thescale.z *= -1;
+            transform.localScale = thescale;
+        }
+        if (currentScene.name == "Level design template")
+        {
+            var clones = GameObject.FindGameObjectsWithTag("Taco");
+            foreach (var clone in clones)
+            {
+                Destroy(clone);
+            }
+            Instantiate(Taco, new Vector3(12, 0, -1), Quaternion.identity);
+            Instantiate(Taco, new Vector3(-9.85f, 7.96f, -1), Quaternion.identity);
+            Instantiate(Taco, new Vector3(12.13f, 12.07f, -1), Quaternion.identity);
+            Instantiate(Taco, new Vector3(-37.84f, 3.74f, -1), Quaternion.identity);
+            Instantiate(Taco, new Vector3(-39.1f, 23.44f, -1), Quaternion.identity);
+            Instantiate(Taco, new Vector3(-18.26f, 1.7f, -1), Quaternion.identity);
+            Instantiate(Taco, new Vector3(4.5f, 57, -1), Quaternion.identity);
+            Instantiate(Taco, new Vector3(-4.33f, 28.19f, -1), Quaternion.identity);
+            Instantiate(Taco, new Vector3(-7.96f, 51.28f, -1), Quaternion.identity);
+        }
+       
+    }
     private void HandleLayers(){
 
         if (!IsControllerGrounded())
