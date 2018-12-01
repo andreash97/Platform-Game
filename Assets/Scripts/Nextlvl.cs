@@ -24,7 +24,7 @@ public class Nextlvl : MonoBehaviour {
             }
             if (currentScene.name == "BossFight")
             {
-                manager.finish();
+                manager.StopCoroutine("Timer");
                 Cursor.visible = true;
                 SceneManager.LoadScene("endscene", LoadSceneMode.Single);
             }
