@@ -4,11 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Nextlvl : MonoBehaviour {
 
-
-    Player player;
+    LevelManager manager;
     void Start()
     {
-        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        manager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
 
     }
 
@@ -25,7 +24,7 @@ public class Nextlvl : MonoBehaviour {
             }
             if (currentScene.name == "BossFight")
             {
-                player.finish();
+                manager.finish();
                 Cursor.visible = true;
                 SceneManager.LoadScene("endscene", LoadSceneMode.Single);
             }
