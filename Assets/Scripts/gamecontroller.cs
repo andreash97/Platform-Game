@@ -13,7 +13,7 @@ public class gamecontroller : MonoBehaviour {
     private int time;
     private int death;
     private int score;
-    private InputField Name;  
+    public InputField Name;  
 
     
 
@@ -24,10 +24,10 @@ public class gamecontroller : MonoBehaviour {
         taco = LevelManager.tacosCollected;
         death = LevelManager.lives;
         time = Mathf.RoundToInt(LevelManager.time);
-        score = taco / time;
-        
+        score = (1 + taco ) / (1 + time) * 1000;
+        Cursor.visible = true;
 
-     
+
 
         TacoCounter.text = "Number of tacos: " + taco;
         TimeUsed.text = "Time Elapsed: " + time;
@@ -42,6 +42,6 @@ public class gamecontroller : MonoBehaviour {
     public void Submit()
     {
         GetComponent<leaderboard>().SubmitScore(Name.text, taco, death, time, score);
-        gameObject.GetComponent<Button>().interactable = false;
+        
     }
 }

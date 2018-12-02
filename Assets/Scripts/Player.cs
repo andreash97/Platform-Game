@@ -33,7 +33,7 @@ public class Player : MonoBehaviour {
         {
             FindObjectOfType<TacoSpawner>().TacoLevel1List();
         }
-        if (currentScene.name == "BossFight")
+        if (currentScene.name == "BossFight" || currentScene.name == "BossFight Easy")
         {
             FindObjectOfType<TacoSpawner>().TacoBossList();
         }

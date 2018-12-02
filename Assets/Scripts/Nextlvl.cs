@@ -30,13 +30,11 @@ public class Nextlvl : MonoBehaviour {
             if (currentScene.name == "BossFight")
             {
                 manager.timerplaying = false;
-                Cursor.visible = true;
                 SceneManager.LoadScene("Scoreboard", LoadSceneMode.Single);
             }
             if (currentScene.name == "BossFight Easy")
             {
                 manager.timerplaying = false;
-                Cursor.visible = true;
                 SceneManager.LoadScene("Scoreboard Easy", LoadSceneMode.Single);
             }
 

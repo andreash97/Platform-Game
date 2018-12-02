@@ -16,7 +16,7 @@ public class leaderboard : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        highscores = new Text[10];
+        
         score = new int[highscores.Length];
         tacos = new int[highscores.Length];
         time = new int[highscores.Length];
@@ -94,12 +94,16 @@ public class leaderboard : MonoBehaviour {
             tacos[submissions] = taco;
             deaths[submissions] = _deaths;
             score[submissions] = _score;
-            time[submissions] = _time;
+            time[submissions] = _time; 
         }
         else if (score[9] < _score)
         {
             save.text = "highscore saved";
             score[9] = _score;
+            names[9] = name;
+            tacos[9] = taco;
+            deaths[9] = _deaths;
+            time[9] = _time;
 
         } 
         else
@@ -151,6 +155,7 @@ public class leaderboard : MonoBehaviour {
 
             savescores();
             drawscores();
+            gameObject.GetComponent<Button>().interactable = false;
         }
     }
 
@@ -159,9 +164,13 @@ public class leaderboard : MonoBehaviour {
 
         for (int x = 0; x < highscores.Length; x++)
         {
-            highscores[x].text =  names[x] + " score: " + score[x] + " tacos: " + tacos[x].ToString() + " time(s): " + time[x].ToString() +
-            " deaths: " + deaths[x].ToString();
-          
+            if (names[x] != null)
+            {
+                highscores[x].text = names[x] + " score: " + score[x] + " tacos: " + tacos[x].ToString() + " time(s): " + time[x].ToString() +
+                " deaths: " + deaths[x].ToString();
+            }
+            else
+                highscores[x].text = " ";
         }
      
     
