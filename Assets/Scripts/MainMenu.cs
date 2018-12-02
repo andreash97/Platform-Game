@@ -8,7 +8,15 @@ public class MainMenu : MonoBehaviour {
     {
         Cursor.visible = true;
     }
-    public void PlayGame ()
+    public void PlayEasyGame ()
+    {
+        SceneManager.LoadScene("Level 1 Easy");
+        Time.timeScale = 1.0f;
+        LevelManager.tacosCollected = 0;
+        LevelManager.time = 0;
+    }
+
+    public void PlayNormalGame()
     {
         SceneManager.LoadScene("Level 1");
         Time.timeScale = 1.0f;
