@@ -5,17 +5,10 @@ using UnityEngine.SceneManagement;
 
 
 public class Player : MonoBehaviour {
-
-
-
     private float inputDirection;  // X component of the vector 
     private float verticalVelocity;  // Y component of the vector
     private Vector3 moveVector;
     private bool secondJumpAvail;
-    public Transform player;
-    public Transform respawnPoint;
-    public GameObject Taco;
-    public GameObject GoldenT;
 
     private float speed = 5.0f;
     private float gravity = 25.0f;
@@ -24,24 +17,10 @@ public class Player : MonoBehaviour {
     private bool facingleft;
     private Animator anim;
     public bool isDead = false;
-    public AudioClip JumpSound;
-    public AudioSource JumpVolume;
-    public AudioSource EatVolume;
-    public AudioSource DeathVolume;
-    public AudioClip EatSound;
-    public AudioClip DeathSound;
     public bool NPCRestart;
     public static int savedtacos;
     private float pressJump;
     private float groundedtimer;
-
-
-
-
-
-
-
-
 
     // Use this for initialization
     void Start()
@@ -49,65 +28,37 @@ public class Player : MonoBehaviour {
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         facingleft = true;
-        JumpVolume.clip = JumpSound;
-        EatVolume.clip = EatSound;
-        DeathVolume.clip = DeathSound;
         Scene currentScene = SceneManager.GetActiveScene();
         if (currentScene.name == "Level 1" || currentScene.name == "Level 1 Easy")
         {
-            Instantiate(Taco, new Vector3(12, 0, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(-9.85f, 7.96f, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(12.13f, 12.07f, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(-37.84f, 3.74f, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(-39.1f, 23.44f, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(-18.26f, 1.7f, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(4.5f, 57, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(-4.33f, 28.19f, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(-7.96f, 51.28f, -1), Quaternion.identity);
-            Instantiate(GoldenT, new Vector3(-22.831f, 68.143f, -1), Quaternion.identity);
+            FindObjectOfType<TacoSpawner>().TacoLevel1List();
         }
         if (currentScene.name == "BossFight")
         {
-            Instantiate(Taco, new Vector3(-2.62f, 9.88f, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(6.48f, 6.76f, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(96.41f, 11.95f, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(120.96f, 8.29f, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(133.1f, 0.29f, -1), Quaternion.identity);
+            FindObjectOfType<TacoSpawner>().TacoBossList();
         }
     }
 
     // Update is called once per frame
     public void Update() {
-
         IsControllerGrounded();
         inputDirection = -Input.GetAxisRaw("Horizontal") * speed;
         Flip(inputDirection);
         HandleLayers();
-
-
-
-        
-
-
+  
         if (isDead)
         {
             Time.timeScale = 0f;
         }
 
-
-
         groundedtimer -= Time.deltaTime; // makes it so that edge jumping is smoother by making you grounded alittle longer than in reality.
         pressJump -= Time.deltaTime;    // makes it so that if you press jump button right before landing you will infact jump.
-
 
         if (Input.GetKeyDown(KeyCode.W))
         {
             pressJump = 0.15f;
             
         }
-
-       
-
 
         if (groundedtimer >0) 
         {
@@ -122,7 +73,7 @@ public class Player : MonoBehaviour {
                 groundedtimer = 0;
                 pressJump = 0;
                 verticalVelocity = 10;
-                JumpVolume.Play();
+                FindObjectOfType<LevelManager>().Jump();
             }
         } 
         else
@@ -130,33 +81,22 @@ public class Player : MonoBehaviour {
             verticalVelocity -= gravity * Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.W))
             {
-
                 if (secondJumpAvail)
                 {
                     anim.SetFloat("groundedtimer", 0);
                     verticalVelocity = 10;
                     anim.SetTrigger("fallingjump");
-                    JumpVolume.Play();
+                    FindObjectOfType<LevelManager>().Jump();
                     groundedtimer = 0;
                     pressJump = 0;
                     secondJumpAvail = false;
-
                 }
-
             }
         }
-    
         moveVector = new Vector3(inputDirection, verticalVelocity, 0);
         controller.Move(moveVector * Time.deltaTime);
         anim.SetFloat("speed", Mathf.Abs(inputDirection));
-
     }
-
-
-
-
-       
-    
 
     private bool IsControllerGrounded()
     {
@@ -172,20 +112,13 @@ public class Player : MonoBehaviour {
 
         if (Physics.Raycast(leftRayStart, Vector3.down, (controller.height / 2) + 0.1f))
         {
-            
-           
             groundedtimer = 0.08f;
             anim.SetFloat("groundedtimer", 0.08F);
-            return true; 
-            
+            return true;    
         }
-
-
 
         if (Physics.Raycast(RightRayStart, Vector3.down, (controller.height / 2) + 0.1f))
         {
-           
-            
             groundedtimer = 0.08f;
             anim.SetFloat("groundedtimer", 0.08F);
             return true;
@@ -200,8 +133,7 @@ public class Player : MonoBehaviour {
         switch (hit.gameObject.tag)
         {
             case "Taco":
-                LevelManager.tacosCollected++;
-                EatVolume.Play();
+                FindObjectOfType<LevelManager>().Taco();
                 Destroy(hit.gameObject);
                 break;
             default:
@@ -213,11 +145,8 @@ public class Player : MonoBehaviour {
     {
         if (other.tag == "Deadly")
         {
-            DeathVolume.Play();
-            LevelManager.lives++;
+            FindObjectOfType<LevelManager>().Dead();
             isDead = true;
-
-
         }
     }
 
@@ -234,12 +163,8 @@ public class Player : MonoBehaviour {
 
     }
     
-    
-
-
     void OnGUI()
     {   
-
         var centeredStyle = GUI.skin.GetStyle("Label");
         centeredStyle.alignment = TextAnchor.UpperCenter;
         if (isDead)
@@ -253,19 +178,13 @@ public class Player : MonoBehaviour {
             {
                 SceneManager.LoadScene("Menu");
             }
-            string respawnText = "OOPS, YOU DIED! \n Press R to retry or M to get to the main menu.";
-            GUI.Box(new Rect(Screen.width/2 - 200, Screen.height/2 - 200, 400, 50), respawnText);
-            string tacoText = "Total tacos: " + LevelManager.tacosCollected;
-            GUI.Box(new Rect(Screen.width/2 - 65, Screen.height/2 - 100, 130, 25), tacoText);
-            string livesText = "Lives spent: " + LevelManager.lives;
-            GUI.Box(new Rect(Screen.width/2 - 65, Screen.height/2 - 0, 130, 25), livesText);
-            
-           
+            FindObjectOfType<LevelManager>().DeadOnGUI();
         }
     }
+
     public void Restart()
     {
-        player.transform.position = respawnPoint.transform.position;
+        FindObjectOfType<LevelManager>().Spawn();
         LevelManager.tacosCollected = savedtacos;
         isDead = false;
         secondJumpAvail = false;
@@ -289,27 +208,15 @@ public class Player : MonoBehaviour {
         }
         if (currentScene.name == "Level 1" || currentScene.name == "Level 1 Easy")
         {
-            
-            Instantiate(Taco, new Vector3(12, 0, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(-9.85f, 7.96f, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(12.13f, 12.07f, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(-37.84f, 3.74f, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(-39.1f, 23.44f, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(-18.26f, 1.7f, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(4.5f, 57, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(-4.33f, 28.19f, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(-7.96f, 51.28f, -1), Quaternion.identity);
+
+            FindObjectOfType<TacoSpawner>().TacoLevel1List();
         }
         if (currentScene.name == "BossFight" || currentScene.name == "BossFight Easy")
         {
-            Instantiate(Taco, new Vector3(-2.62f, 9.88f, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(6.48f, 6.76f, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(96.41f, 11.95f, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(120.96f, 8.29f, -1), Quaternion.identity);
-            Instantiate(Taco, new Vector3(133.1f, 0.29f, -1), Quaternion.identity);
+            FindObjectOfType<TacoSpawner>().TacoBossList();
         }
-
     }
+
     private void HandleLayers(){
 
         if (!IsControllerGrounded())
@@ -323,7 +230,5 @@ public class Player : MonoBehaviour {
 
 
         }
-
-
     }
 }

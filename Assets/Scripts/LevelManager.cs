@@ -4,7 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
-
+    public AudioClip JumpSound;
+    public AudioSource JumpVolume;
+    public AudioSource EatVolume;
+    public AudioSource DeathVolume;
+    public AudioClip EatSound;
+    public AudioClip DeathSound;
     public static int lives = 0;
     public static int tacosCollected = 0;
     public static float time;
@@ -14,11 +19,14 @@ public class LevelManager : MonoBehaviour {
     public Texture2D tacoImage;
     public Texture2D timerImage;
     public Texture2D deathsImage;
-
+    public Transform player;
+    public Transform respawnPoint;
 
     // Use this for initialization
     void Start () {
-
+        JumpVolume.clip = JumpSound;
+        EatVolume.clip = EatSound;
+        DeathVolume.clip = DeathSound;
         timerplaying = true;
     }
     public void Update()
@@ -35,6 +43,7 @@ public class LevelManager : MonoBehaviour {
             }
         }
     }
+
     void OnGUI()
     {
         GUI.backgroundColor = Color.clear;
@@ -54,4 +63,35 @@ public class LevelManager : MonoBehaviour {
 
     }
 
+    public void DeadOnGUI()
+    {
+        string respawnText = "OOPS, YOU DIED! \n Press R to retry or M to get to the main menu.";
+        GUI.Box(new Rect(Screen.width / 2 - 200, Screen.height / 2 - 200, 400, 50), respawnText);
+        string tacoText = "Total tacos: " + LevelManager.tacosCollected;
+        GUI.Box(new Rect(Screen.width / 2 - 65, Screen.height / 2 - 100, 130, 25), tacoText);
+        string livesText = "Lives spent: " + LevelManager.lives;
+        GUI.Box(new Rect(Screen.width / 2 - 65, Screen.height / 2 - 0, 130, 25), livesText);
+    }
+
+    public void Spawn()
+    {
+        player.transform.position = respawnPoint.transform.position;
+    }
+
+    public void Jump()
+    {
+        JumpVolume.Play();
+    }
+
+    public void Taco()
+    {
+        LevelManager.tacosCollected++;
+        EatVolume.Play();
+    }
+
+    public void Dead()
+    {
+        DeathVolume.Play();
+        LevelManager.lives++;
+    }
 }

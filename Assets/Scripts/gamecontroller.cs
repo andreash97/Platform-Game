@@ -7,16 +7,32 @@ public class gamecontroller : MonoBehaviour {
     public Text TacoCounter;
     public Text TimeUsed;
     public Text DeathCount;
-    public InputField Name;  
+    public Text Score;
+
+    private int taco;
+    private int time;
+    private int death;
+    private int score;
+    private InputField Name;  
 
     
 
 	// Use this for initialization
 	void Start () {
-        Cursor.visible = true;
-        TacoCounter.text = "Number of tacos: " + LevelManager.tacosCollected; 
-        TimeUsed.text = "Time Elapsed: " + LevelManager.timespend;
-        DeathCount.text = "Number of deaths: " + LevelManager.lives;
+
+
+        taco = LevelManager.tacosCollected;
+        death = LevelManager.lives;
+        time = Mathf.RoundToInt(LevelManager.time);
+        score = taco / time;
+        
+
+     
+
+        TacoCounter.text = "Number of tacos: " + taco;
+        TimeUsed.text = "Time Elapsed: " + time;
+        DeathCount.text = "Number of deaths: " + death;
+        Score.text = "Score: " + score;
     }
 	
 	// Update is called once per frame
@@ -25,7 +41,7 @@ public class gamecontroller : MonoBehaviour {
     } 
     public void Submit()
     {
-        GetComponent<leaderboard>().SubmitScore(Name.text, LevelManager.tacosCollected, LevelManager.lives, LevelManager.time);
-
+        GetComponent<leaderboard>().SubmitScore(Name.text, taco, death, time, score);
+        gameObject.GetComponent<Button>().interactable = false;
     }
 }
