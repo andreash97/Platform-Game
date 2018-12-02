@@ -17,18 +17,29 @@ public class Nextlvl : MonoBehaviour {
         if (other.tag == "Player")
         {
             Scene currentScene = SceneManager.GetActiveScene();
-            if (currentScene.name == "Level design template")
+            if (currentScene.name == "Level 1")
             {
                 Player.savedtacos = LevelManager.tacosCollected;
                 SceneManager.LoadScene("BossFight", LoadSceneMode.Single);
             }
+            if (currentScene.name == "Level 1 Easy")
+            {
+                Player.savedtacos = LevelManager.tacosCollected;
+                SceneManager.LoadScene("BossFight Easy", LoadSceneMode.Single);
+            }
             if (currentScene.name == "BossFight")
             {
-                manager.StopCoroutine("Timer");
+                manager.timerplaying = false;
                 Cursor.visible = true;
-                SceneManager.LoadScene("endscene", LoadSceneMode.Single);
+                SceneManager.LoadScene("Scoreboard", LoadSceneMode.Single);
             }
-            
+            if (currentScene.name == "BossFight Easy")
+            {
+                manager.timerplaying = false;
+                Cursor.visible = true;
+                SceneManager.LoadScene("Scoreboard Easy", LoadSceneMode.Single);
+            }
+
 
         }
         

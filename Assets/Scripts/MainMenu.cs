@@ -4,11 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
-
-	public void PlayGame ()
+    void Start()
     {
-        SceneManager.LoadScene("Level design template");
+        Cursor.visible = true;
+    }
+    public void PlayGame ()
+    {
+        SceneManager.LoadScene("Level 1");
         Time.timeScale = 1.0f;
+        LevelManager.tacosCollected = 0;
+        LevelManager.time = 0;
     }
 
     public void QuitGame()

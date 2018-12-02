@@ -34,17 +34,18 @@ public class Player : MonoBehaviour {
     public static int savedtacos;
     private float pressJump;
     private float groundedtimer;
-    
-    
-    
 
-    
-  
+
+
+
+
+
 
 
 
     // Use this for initialization
-    void Start() {
+    void Start()
+    {
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         facingleft = true;
@@ -52,8 +53,8 @@ public class Player : MonoBehaviour {
         EatVolume.clip = EatSound;
         DeathVolume.clip = DeathSound;
         Scene currentScene = SceneManager.GetActiveScene();
-        if (currentScene.name == "Level design template")
-        { 
+        if (currentScene.name == "Level 1" || currentScene.name == "Level 1 Easy")
+        {
             Instantiate(Taco, new Vector3(12, 0, -1), Quaternion.identity);
             Instantiate(Taco, new Vector3(-9.85f, 7.96f, -1), Quaternion.identity);
             Instantiate(Taco, new Vector3(12.13f, 12.07f, -1), Quaternion.identity);
@@ -64,6 +65,14 @@ public class Player : MonoBehaviour {
             Instantiate(Taco, new Vector3(-4.33f, 28.19f, -1), Quaternion.identity);
             Instantiate(Taco, new Vector3(-7.96f, 51.28f, -1), Quaternion.identity);
             Instantiate(GoldenT, new Vector3(-22.831f, 68.143f, -1), Quaternion.identity);
+        }
+        if (currentScene.name == "BossFight")
+        {
+            Instantiate(Taco, new Vector3(-2.62f, 9.88f, -1), Quaternion.identity);
+            Instantiate(Taco, new Vector3(6.48f, 6.76f, -1), Quaternion.identity);
+            Instantiate(Taco, new Vector3(96.41f, 11.95f, -1), Quaternion.identity);
+            Instantiate(Taco, new Vector3(120.96f, 8.29f, -1), Quaternion.identity);
+            Instantiate(Taco, new Vector3(133.1f, 0.29f, -1), Quaternion.identity);
         }
     }
 
@@ -243,7 +252,6 @@ public class Player : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.M))
             {
                 SceneManager.LoadScene("Menu");
-                Cursor.visible = true;
             }
             string respawnText = "OOPS, YOU DIED! \n Press R to retry or M to get to the main menu.";
             GUI.Box(new Rect(Screen.width/2 - 200, Screen.height/2 - 200, 400, 50), respawnText);
@@ -274,13 +282,14 @@ public class Player : MonoBehaviour {
             thescale.z *= -1;
             transform.localScale = thescale;
         }
-        if (currentScene.name == "Level design template")
+        var clones = GameObject.FindGameObjectsWithTag("Taco");
+        foreach (var clone in clones)
         {
-            var clones = GameObject.FindGameObjectsWithTag("Taco");
-            foreach (var clone in clones)
-            {
-                Destroy(clone);
-            }
+            Destroy(clone);
+        }
+        if (currentScene.name == "Level 1" || currentScene.name == "Level 1 Easy")
+        {
+            
             Instantiate(Taco, new Vector3(12, 0, -1), Quaternion.identity);
             Instantiate(Taco, new Vector3(-9.85f, 7.96f, -1), Quaternion.identity);
             Instantiate(Taco, new Vector3(12.13f, 12.07f, -1), Quaternion.identity);
@@ -291,7 +300,15 @@ public class Player : MonoBehaviour {
             Instantiate(Taco, new Vector3(-4.33f, 28.19f, -1), Quaternion.identity);
             Instantiate(Taco, new Vector3(-7.96f, 51.28f, -1), Quaternion.identity);
         }
-       
+        if (currentScene.name == "BossFight" || currentScene.name == "BossFight Easy")
+        {
+            Instantiate(Taco, new Vector3(-2.62f, 9.88f, -1), Quaternion.identity);
+            Instantiate(Taco, new Vector3(6.48f, 6.76f, -1), Quaternion.identity);
+            Instantiate(Taco, new Vector3(96.41f, 11.95f, -1), Quaternion.identity);
+            Instantiate(Taco, new Vector3(120.96f, 8.29f, -1), Quaternion.identity);
+            Instantiate(Taco, new Vector3(133.1f, 0.29f, -1), Quaternion.identity);
+        }
+
     }
     private void HandleLayers(){
 

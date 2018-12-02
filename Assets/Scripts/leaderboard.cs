@@ -8,7 +8,7 @@ public class leaderboard : MonoBehaviour {
     public Text[] highscores;
 
     int[] tacos;
-    int[] time;
+    float [] time;
     int[] deaths;
     string[] names;
 	// Use this for initialization
@@ -16,7 +16,7 @@ public class leaderboard : MonoBehaviour {
 
         
         tacos = new int[highscores.Length];
-        time = new int[highscores.Length];
+        time = new float[highscores.Length];
         deaths = new int[highscores.Length];
         names = new string[highscores.Length];
 
@@ -48,7 +48,7 @@ public class leaderboard : MonoBehaviour {
         }
         for (int x = 0; x < time.Length; x++)
         {
-            PlayerPrefs.SetInt("time" + x, time[x]);
+            PlayerPrefs.SetFloat("time" + x, time[x]);
         }
         for (int x = 0; x < tacos.Length; x++)
         {
@@ -60,7 +60,7 @@ public class leaderboard : MonoBehaviour {
         }
     } 
 
-    public void SubmitScore(string name, int taco, int _deaths, int _time)
+    public void SubmitScore(string name, int taco, int _deaths, float _time)
     {
 
         for (int x = 0; x < highscores.Length; x++) {
@@ -111,7 +111,7 @@ public class leaderboard : MonoBehaviour {
 
         for (int x = 0; x < highscores.Length; x++)
         {
-            highscores[x].text = names[x] + " tacos: " + tacos[x].ToString() + " time(s): " + time[x].ToString() +
+            highscores[x].text = names[x] + " tacos: " + tacos[x].ToString() + " Time Spend: " + time[x].ToString() +
             " deaths: " + deaths[x].ToString();
           
         }

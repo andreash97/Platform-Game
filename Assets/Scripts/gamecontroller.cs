@@ -13,9 +13,10 @@ public class gamecontroller : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        Cursor.visible = true;
         TacoCounter.text = "Number of tacos: " + LevelManager.tacosCollected; 
-        TimeUsed.text = "Time Elapsed: " + LevelManager.time;
-        DeathCount.text = "Number of deaths: " + LevelManager.lives; 
+        TimeUsed.text = "Time Elapsed: " + LevelManager.timespend;
+        DeathCount.text = "Number of deaths: " + LevelManager.lives;
     }
 	
 	// Update is called once per frame

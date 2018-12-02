@@ -12,12 +12,21 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: f6cfa7aba8cceaf418b19776f24c80f0
   - enabled: 1
-    path: Assets/Scenes/Level design template.unity
+    path: Assets/Scenes/Level 1.unity
     guid: 2266968b15bf892499bfa1133c597a96
+  - enabled: 1
+    path: Assets/Scenes/Level 1 Easy.unity
+    guid: c0de12d6510157b47b9278b8ddd72806
   - enabled: 1
     path: Assets/Scenes/BossFight.unity
     guid: 755acb39835ed3b43a11dd608852366f
   - enabled: 1
-    path: Assets/Scenes/endscene.unity
+    path: Assets/Scenes/BossFight Easy.unity
+    guid: 1c959acdc40a971439ef385cea257389
+  - enabled: 1
+    path: Assets/Scenes/Scoreboard.unity
     guid: 78bb197e2870bc94999fe21636343b91
+  - enabled: 1
+    path: Assets/Scenes/Scoreboard Easy.unity
+    guid: 5364a3c9ae1a7fb4197cdc3f3db014a9
   m_configObjects: {}

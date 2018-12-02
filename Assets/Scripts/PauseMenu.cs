@@ -74,9 +74,7 @@ public class PauseMenu : MonoBehaviour
             }
             if (GUI.Button(new Rect(Screen.width / 2 - 60, Screen.height / 2 + 50, 100, 40), "Menu"))
             {
-                LevelManager.tacosCollected = 0;
-                SceneManager.LoadScene("Menu");
-                
+                SceneManager.LoadScene("Menu"); 
             }
 
         }
