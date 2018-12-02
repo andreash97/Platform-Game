@@ -15,6 +15,8 @@ public class gamecontroller : MonoBehaviour {
     private int score;
     public InputField Name;
     public GameObject myButton;
+    public GameObject myInput;
+    public GameObject myText;
 
 
     // Use this for initialization
@@ -24,7 +26,12 @@ public class gamecontroller : MonoBehaviour {
         taco = LevelManager.tacosCollected;
         death = LevelManager.lives;
         time = Mathf.RoundToInt(LevelManager.time);
-        score = (1 + taco ) / (1 + time) * 1000;
+        if (taco == 0 || time == 0)
+        {
+            score = 0;
+        }
+        score =  taco / time * 1000;
+
         Cursor.visible = true;
 
 
@@ -43,5 +50,7 @@ public class gamecontroller : MonoBehaviour {
     {
         GetComponent<leaderboard>().SubmitScore(Name.text, taco, death, time, score);
         myButton.SetActive(false);
+        myInput.SetActive(false);
+        myText.SetActive(false);
     }
 }

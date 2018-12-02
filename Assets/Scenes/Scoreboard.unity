@@ -704,6 +704,8 @@ MonoBehaviour:
   Score: {fileID: 284992828}
   Name: {fileID: 214665356}
   myButton: {fileID: 1469530808}
+  myInput: {fileID: 214665354}
+  myText: {fileID: 1068000217}
 --- !u!4 &273902221
 Transform:
   m_ObjectHideFlags: 0
