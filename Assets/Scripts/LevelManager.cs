@@ -60,6 +60,7 @@ public class LevelManager : MonoBehaviour {
         string deathsText = "" + lives;
         GUI.Box(new Rect(Screen.width - 60, 80, 30, 25), deathsText);
         GUI.Box(new Rect(Screen.width - 116, 80, 62.5f, 31.25f), deathsImage);
+
     }
 
     public void DeadOnGUI()

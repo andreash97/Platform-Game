@@ -77,14 +77,15 @@ public class leaderboard : MonoBehaviour {
         for(int x = 0; x<highscores.Length; x++)
         {
 
-            if (names[x] != null)
+            if (!string.IsNullOrEmpty(names[x]))
             {
 
                 submissions++;
-
+                
             }
 
-
+            Debug.Log(submissions);
+            Debug.Log(names[x]);
         }
 
         if (submissions < highscores.Length)
@@ -155,7 +156,7 @@ public class leaderboard : MonoBehaviour {
 
             savescores();
             drawscores();
-            gameObject.GetComponent<Button>().interactable = false;
+            
         }
     }
 
@@ -164,7 +165,7 @@ public class leaderboard : MonoBehaviour {
 
         for (int x = 0; x < highscores.Length; x++)
         {
-            if (names[x] != null)
+            if (!string.IsNullOrEmpty(names[x]))
             {
                 highscores[x].text = names[x] + " score: " + score[x] + " tacos: " + tacos[x].ToString() + " time(s): " + time[x].ToString() +
                 " deaths: " + deaths[x].ToString();

@@ -13,12 +13,12 @@ public class gamecontroller : MonoBehaviour {
     private int time;
     private int death;
     private int score;
-    public InputField Name;  
+    public InputField Name;
+    public GameObject myButton;
 
-    
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
 
         taco = LevelManager.tacosCollected;
@@ -42,6 +42,6 @@ public class gamecontroller : MonoBehaviour {
     public void Submit()
     {
         GetComponent<leaderboard>().SubmitScore(Name.text, taco, death, time, score);
-        
+        myButton.SetActive(false);
     }
 }
