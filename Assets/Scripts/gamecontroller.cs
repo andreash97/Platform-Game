@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class gamecontroller : MonoBehaviour {
 
     public Text TacoCounter;
@@ -13,6 +14,7 @@ public class gamecontroller : MonoBehaviour {
     private int time;
     private int death;
     private int score;
+    private float scoremath;
     public InputField Name;
     public GameObject myButton;
     public GameObject myInput;
@@ -26,14 +28,13 @@ public class gamecontroller : MonoBehaviour {
         taco = LevelManager.tacosCollected;
         death = LevelManager.lives;
         time = Mathf.RoundToInt(LevelManager.time);
+        scoremath = ((taco*100) / (time/5));
+        score = Mathf.RoundToInt(scoremath);
+        Cursor.visible = true;
         if (taco == 0 || time == 0)
         {
             score = 0;
         }
-        score =  taco / time * 1000;
-
-        Cursor.visible = true;
-
 
 
         TacoCounter.text = "Number of tacos: " + taco;
@@ -44,8 +45,13 @@ public class gamecontroller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
-    } 
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
     public void Submit()
     {
         GetComponent<leaderboard>().SubmitScore(Name.text, taco, death, time, score);
