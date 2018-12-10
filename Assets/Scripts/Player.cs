@@ -21,6 +21,7 @@ public class Player : MonoBehaviour {
     public static int savedtacos;
     private float pressJump;
     private float groundedtimer;
+    
 
     // Use this for initialization
     void Start()
@@ -32,6 +33,7 @@ public class Player : MonoBehaviour {
         if (currentScene.name == "Level 1" || currentScene.name == "Level 1 Easy")
         {
             FindObjectOfType<TacoSpawner>().TacoLevel1List();
+         
         }
         if (currentScene.name == "BossFight" || currentScene.name == "BossFight Easy")
         {

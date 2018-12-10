@@ -5,7 +5,7 @@ using UnityEngine;
 public class TacoSpawner : MonoBehaviour {
 
     public GameObject Taco;
-    public GameObject GoldenT;
+
 
 public void TacoLevel1List()
     {
@@ -18,7 +18,7 @@ public void TacoLevel1List()
         Instantiate(Taco, new Vector3(4.5f, 57, -1), Quaternion.identity);
         Instantiate(Taco, new Vector3(-4.33f, 28.19f, -1), Quaternion.identity);
         Instantiate(Taco, new Vector3(-7.96f, 51.28f, -1), Quaternion.identity);
-        Instantiate(GoldenT, new Vector3(-22.831f, 68.143f, -1), Quaternion.identity);
+        
     }
 
     public void TacoBossList()

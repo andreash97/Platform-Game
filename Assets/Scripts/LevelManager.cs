@@ -21,6 +21,7 @@ public class LevelManager : MonoBehaviour {
     public Texture2D deathsImage;
     public Transform player;
     public Transform respawnPoint;
+    private GUIStyle guiStyle = new GUIStyle();
 
     // Use this for initialization
     void Start () {
@@ -44,34 +45,48 @@ public class LevelManager : MonoBehaviour {
         }
     }
 
+    public void DeadOnGUI()
+    {
+        guiStyle.fontSize = 40;
+        guiStyle.normal.textColor = Color.white;
+        GUI.backgroundColor = Color.clear;
+        guiStyle.font = Resources.Load<Font>("Another Brick");
+
+        string respawnText = "                       YOU WERE CAUGHT! \n PRESS R TO RETRY OR M TO GO TO THE MAIN MENU";
+        GUI.Box(new Rect(Screen.width / 2 - 390, Screen.height / 2 - 160, 400, 50), respawnText, guiStyle);
+
+        string tacoText = "" + tacosCollected;
+        GUI.Box(new Rect(Screen.width / 2 + 60, Screen.height / 2 + 100, 60, 50), tacoText, guiStyle);
+        GUI.Box(new Rect(Screen.width / 2 - 110, Screen.height / 2 + 75, 150, 75), tacoImage);
+
+        string deathsText = "" + lives;
+        GUI.Box(new Rect(Screen.width / 2 + 60, Screen.height / 2 + 190, 60, 50), deathsText, guiStyle);
+        GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 180, 125, 62.5f), deathsImage);
+    }
+
     void OnGUI()
     {
         GUI.backgroundColor = Color.clear;
+        guiStyle.fontSize = 20;
+        guiStyle.normal.textColor = Color.white;
+        GUI.backgroundColor = Color.clear;
+        guiStyle.font = Resources.Load<Font>("Another Brick");
 
         string timeText = "" + timespend;
-        GUI.Box(new Rect(Screen.width - 75, 20, 60, 25), timeText);
-        GUI.Box(new Rect(Screen.width - 122, 10, 75, 37.5f), timerImage);
+        GUI.Box(new Rect(Screen.width - 75, 25, 60, 25), timeText, guiStyle);
+        GUI.Box(new Rect(Screen.width - 155, 10, 93.75f, 46.875f), timerImage);
 
         //Taco UI
         string tacoText = "" + tacosCollected;
-        GUI.Box(new Rect(Screen.width - 60, 50, 30, 25), tacoText);
-        GUI.Box(new Rect(Screen.width - 110, 50, 50, 25), tacoImage);
+        GUI.Box(new Rect(Screen.width - 60, 68, 30, 25), tacoText, guiStyle);
+        GUI.Box(new Rect(Screen.width - 138, 63, 62.5f, 31.25f), tacoImage);
 
         string deathsText = "" + lives;
-        GUI.Box(new Rect(Screen.width - 60, 80, 30, 25), deathsText);
-        GUI.Box(new Rect(Screen.width - 116, 80, 62.5f, 31.25f), deathsImage);
+        GUI.Box(new Rect(Screen.width - 60, 110, 30, 25), deathsText, guiStyle);
+        GUI.Box(new Rect(Screen.width - 145, 100, 78.125f, 39.0625f), deathsImage);
 
     }
 
-    public void DeadOnGUI()
-    {
-        string respawnText = "OOPS, YOU DIED! \n Press R to retry or M to get to the main menu.";
-        GUI.Box(new Rect(Screen.width / 2 - 200, Screen.height / 2 - 200, 400, 50), respawnText);
-        string tacoText = "Total tacos: " + LevelManager.tacosCollected;
-        GUI.Box(new Rect(Screen.width / 2 - 65, Screen.height / 2 - 100, 130, 25), tacoText);
-        string livesText = "Lives spent: " + LevelManager.lives;
-        GUI.Box(new Rect(Screen.width / 2 - 65, Screen.height / 2 - 0, 130, 25), livesText);
-    }
 
     public void Spawn()
     {
