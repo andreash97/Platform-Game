@@ -14,21 +14,26 @@ public class gamecontroller : MonoBehaviour {
     private int time;
     private int death;
     private int score;
+    private string timespend;
     private float scoremath;
     public InputField Name;
     public GameObject myButton;
     public GameObject myInput;
     public GameObject myText;
+    
 
 
     // Use this for initialization
     void Start () {
 
 
+        Cursor.visible = true;
         taco = LevelManager.tacosCollected;
         death = LevelManager.lives;
         time = Mathf.RoundToInt(LevelManager.time);
-        Cursor.visible = true;
+        timespend = LevelManager.timespend;
+
+        
         if (taco == 0 || time < 5)
         {
             score = 0;
@@ -41,7 +46,7 @@ public class gamecontroller : MonoBehaviour {
 
 
         TacoCounter.text = "Number of tacos: " + taco;
-        TimeUsed.text = "Time Elapsed: " + time;
+        TimeUsed.text = "Time Elapsed: " + timespend;
         DeathCount.text = "Number of deaths: " + death;
         Score.text = "Score: " + score;
     }
@@ -57,9 +62,10 @@ public class gamecontroller : MonoBehaviour {
 
     public void Submit()
     {
-        GetComponent<leaderboard>().SubmitScore(Name.text, taco, death, time, score);
+        GetComponent<leaderboard>().SubmitScore(Name.text, taco, death, timespend, score);
         myButton.SetActive(false);
         myInput.SetActive(false);
         myText.SetActive(false);
+       
     }
 }

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour {
+public class LevelManager : MonoBehaviour
+{
     public AudioClip JumpSound;
     public AudioSource JumpVolume;
     public AudioSource EatVolume;
@@ -24,7 +25,8 @@ public class LevelManager : MonoBehaviour {
     private GUIStyle guiStyle = new GUIStyle();
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         JumpVolume.clip = JumpSound;
         EatVolume.clip = EatSound;
         DeathVolume.clip = DeathSound;
@@ -32,14 +34,15 @@ public class LevelManager : MonoBehaviour {
     }
     public void Update()
     {
-        if(timerplaying == true)
+        if (timerplaying == true)
         {
             time += Time.deltaTime * speed;
             string hours = Mathf.Floor((time % 216000) / 3600).ToString("00");
             string minutes = Mathf.Floor((time % 3600) / 60).ToString("00");
             string seconds = (time % 60).ToString("00");
             timespend = minutes + ":" + seconds;
-            if (time >= 3600) {
+            if (time >= 3600)
+            {
                 timespend = hours + ":" + minutes + ":" + seconds;
             }
         }
