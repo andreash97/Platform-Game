@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-public class gamecontroller : MonoBehaviour {
+public class gamecontroller : MonoBehaviour
+{
 
     public Text TacoCounter;
     public Text TimeUsed;
@@ -11,10 +12,11 @@ public class gamecontroller : MonoBehaviour {
     public Text Score;
 
     private int taco;
-    private int time;
+    private string time;
     private int death;
     private int score;
     private float scoremath;
+    private float timemath;
     public InputField Name;
     public GameObject myButton;
     public GameObject myInput;
@@ -22,16 +24,18 @@ public class gamecontroller : MonoBehaviour {
 
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
 
-
+        Cursor.visible = true;
         taco = LevelManager.tacosCollected;
         death = LevelManager.lives;
-        time = Mathf.RoundToInt(LevelManager.time);
-        scoremath = ((taco*100) / (time/5));
+        time = LevelManager.timespend;
+        timemath = Mathf.RoundToInt(LevelManager.time);
+        scoremath = ((taco * 100) / (timemath / 5));
         score = Mathf.RoundToInt(scoremath);
-        Cursor.visible = true;
-        if (taco == 0 || time == 0)
+
+        if (taco == 0 || timemath == 0)
         {
             score = 0;
         }
@@ -42,9 +46,10 @@ public class gamecontroller : MonoBehaviour {
         DeathCount.text = "Number of deaths: " + death;
         Score.text = "Score: " + score;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
     }
 
     public void BackToMenu()
