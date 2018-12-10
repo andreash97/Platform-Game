@@ -7,7 +7,7 @@ public class TargetFrameRate : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 0;
 	}
 	
 	// Update is called once per frame

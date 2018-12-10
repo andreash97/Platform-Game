@@ -75,6 +75,7 @@ public class LevelManager : MonoBehaviour
         GUI.backgroundColor = Color.clear;
         guiStyle.font = Resources.Load<Font>("Another Brick");
 
+        //Time UI
         string timeText = "" + timespend;
         GUI.Box(new Rect(Screen.width - 75, 25, 60, 25), timeText, guiStyle);
         GUI.Box(new Rect(Screen.width - 155, 10, 93.75f, 46.875f), timerImage);
@@ -84,6 +85,7 @@ public class LevelManager : MonoBehaviour
         GUI.Box(new Rect(Screen.width - 60, 68, 30, 25), tacoText, guiStyle);
         GUI.Box(new Rect(Screen.width - 138, 63, 62.5f, 31.25f), tacoImage);
 
+        //Death UI
         string deathsText = "" + lives;
         GUI.Box(new Rect(Screen.width - 60, 110, 30, 25), deathsText, guiStyle);
         GUI.Box(new Rect(Screen.width - 145, 100, 78.125f, 39.0625f), deathsImage);

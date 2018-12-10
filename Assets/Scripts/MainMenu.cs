@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
+    public static string difficulty;
     void Start()
     {
         Cursor.visible = true;
     }
     public void PlayEasyGame ()
     {
-        SceneManager.LoadScene("Level 1 Easy");
+        SceneManager.LoadScene("StartCutScene");
+        difficulty = "Easy";
         Time.timeScale = 1.0f;
         LevelManager.tacosCollected = 0;
         LevelManager.time = 0;
@@ -18,7 +20,8 @@ public class MainMenu : MonoBehaviour {
 
     public void PlayNormalGame()
     {
-        SceneManager.LoadScene("Level 1");
+        difficulty = "Normal";
+        SceneManager.LoadScene("StartCutScene");
         Time.timeScale = 1.0f;
         LevelManager.tacosCollected = 0;
         LevelManager.time = 0;

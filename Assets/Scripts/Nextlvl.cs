@@ -20,12 +20,12 @@ public class Nextlvl : MonoBehaviour {
             if (currentScene.name == "Level 1")
             {
                 Player.savedtacos = LevelManager.tacosCollected;
-                SceneManager.LoadScene("BossFight", LoadSceneMode.Single);
+                SceneManager.LoadScene("Level1EndCutScene", LoadSceneMode.Single);
             }
             if (currentScene.name == "Level 1 Easy")
             {
                 Player.savedtacos = LevelManager.tacosCollected;
-                SceneManager.LoadScene("BossFight Easy", LoadSceneMode.Single);
+                SceneManager.LoadScene("Level1EndCutScene", LoadSceneMode.Single);
             }
             if (currentScene.name == "BossFight")
             {
