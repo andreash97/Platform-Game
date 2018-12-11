@@ -110,7 +110,7 @@ public class leaderboard1 : MonoBehaviour {
         } 
         else
         {
-            save.text = "Sorry, not a new highscore. try again";
+            save.text = "Not a highscore";
         }
 
 

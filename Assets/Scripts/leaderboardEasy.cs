@@ -113,7 +113,7 @@ public class leaderboardEasy : MonoBehaviour
         }
         else
         {
-            save.text = "Sorry, not a new highscore. try again";
+            save.text = "Not a Highscore";
         }
 
 
@@ -176,16 +176,16 @@ public class leaderboardEasy : MonoBehaviour
                     switch (names[x].Length)
                     {
                         case 7:
-                            highscores[x].text = names[x] + "      " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
+                            highscores[x].text = names[x] + "   " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
                 "      " + deaths[x].ToString();
                             break;
                         case 6:
-                            highscores[x].text = names[x] + "       " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
+                            highscores[x].text = names[x] + "     " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
                 "      " + deaths[x].ToString();
 
                             break;
                         case 5:
-                            highscores[x].text = names[x] + "        " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
+                            highscores[x].text = names[x] + "       " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
                 "      " + deaths[x].ToString();
                             break;
                         case 4:
@@ -193,15 +193,15 @@ public class leaderboardEasy : MonoBehaviour
                 "      " + deaths[x].ToString();
                             break;
                         case 3:
-                            highscores[x].text = names[x] + "          " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
-                "      " + deaths[x].ToString();
-                            break;
-                        case 2:
                             highscores[x].text = names[x] + "           " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
                 "      " + deaths[x].ToString();
                             break;
+                        case 2:
+                            highscores[x].text = names[x] + "             " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
+                "      " + deaths[x].ToString();
+                            break;
                         case 1:
-                            highscores[x].text = names[x] + "            " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
+                            highscores[x].text = names[x] + "               " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
                 "      " + deaths[x].ToString();
                             break;
                         default:
