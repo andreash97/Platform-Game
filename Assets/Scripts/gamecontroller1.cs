@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-public class gamecontroller1 : MonoBehaviour {
+public class gamecontroller1 : MonoBehaviour
+{
 
     public Text TacoCounter;
     public Text TimeUsed;
@@ -20,20 +21,22 @@ public class gamecontroller1 : MonoBehaviour {
     public Button submit;
     public GameObject myButton;
     public GameObject myInput;
-    public GameObject myText;
+    public GameObject myButton2;
+    //ikke endre
 
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         Name.characterLimit = 7;
         Cursor.visible = true;
         taco = LevelManager.tacosCollected;
         death = LevelManager.lives;
-        time = LevelManager.timespend; 
+        time = LevelManager.timespend;
         timemath = Mathf.RoundToInt(LevelManager.time);
-        scoremath = ((taco*100) / (timemath/5));
+        scoremath = ((taco * 100) / (timemath / 5));
         score = Mathf.RoundToInt(scoremath);
-       
+
         if (taco == 0 || timemath == 0)
         {
             score = 0;
@@ -45,9 +48,10 @@ public class gamecontroller1 : MonoBehaviour {
         DeathCount.text = "Number of deaths: " + death;
         Score.text = "Score: " + score;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
     }
 
     public void BackToMenu()
@@ -63,15 +67,24 @@ public class gamecontroller1 : MonoBehaviour {
             GetComponent<leaderboard1>().SubmitScore(Name.text, taco, death, time, score);
             myButton.SetActive(false);
             myInput.SetActive(false);
-            myText.SetActive(false);
+
         }
         if (currentScene.name == "Scoreboard Easy")
         {
             GetComponent<leaderboardEasy>().SubmitScore(Name.text, taco, death, time, score);
             myButton.SetActive(false);
             myInput.SetActive(false);
-            myText.SetActive(false);
+
         }
-        
+
+    }
+
+    public void backToMenu()
+    {
+
+        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+
+
+
     }
 }

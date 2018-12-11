@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class leaderboard1 : MonoBehaviour {
 
@@ -14,9 +13,8 @@ public class leaderboard1 : MonoBehaviour {
     int[] score;
     string[] names;
     public static int submissions;
-    
-    // Use this for initialization
-    void Start () {
+	// Use this for initialization
+	void Start () {
 
         
         score = new int[highscores.Length];
@@ -24,61 +22,53 @@ public class leaderboard1 : MonoBehaviour {
         time = new string[highscores.Length];
         deaths = new int[highscores.Length];
         names = new string[highscores.Length];
-       
 
-        
-            for (int x=0; x<tacos.Length; x++)
-            {
-                tacos[x] = PlayerPrefs.GetInt("tacos" + x);
-            }
-            for (int x = 0; x < time.Length; x++)
-            {
-                time[x] = PlayerPrefs.GetString("time" + x);
-            }
-            for (int x = 0; x < deaths.Length; x++)
-            {
-                deaths[x] = PlayerPrefs.GetInt("deaths" + x);
-            }
-            for (int x = 0; x < names.Length; x++)
-            {
-                names[x] = PlayerPrefs.GetString("names" + x);
-            }
-            for (int x = 0; x < score.Length; x++)
-            { 
-                score[x] = PlayerPrefs.GetInt("score" + x);
-            }
-            drawscores();
+        for (int x=0; x<tacos.Length; x++)
+        {
+            tacos[x] = PlayerPrefs.GetInt("tacos" + x);
+        }
+        for (int x = 0; x < time.Length; x++)
+        {
+            time[x] = PlayerPrefs.GetString("time" + x);
+        }
+        for (int x = 0; x < deaths.Length; x++)
+        {
+            deaths[x] = PlayerPrefs.GetInt("deaths" + x);
+        }
+        for (int x = 0; x < names.Length; x++)
+        {
+            names[x] = PlayerPrefs.GetString("names" + x);
+        }
+        for (int x = 0; x < score.Length; x++)
+        { 
+            score[x] = PlayerPrefs.GetInt("score" + x);
+        }
+
+        drawscores();
     }
 	
     void savescores() {
 
-
-       
-            for (int x = 0; x < tacos.Length; x++)
-            {
-                PlayerPrefs.SetInt("tacos" + x, tacos [x]);
-            }
-            for (int x = 0; x < time.Length; x++)
-            {
-                PlayerPrefs.SetString("time" + x, time[x]);
-            }
-            for (int x = 0; x < tacos.Length; x++)
-            {
-             PlayerPrefs.SetInt("deaths" + x, deaths[x]);
-            }
-            for (int x = 0; x < names.Length; x++)
-            {
-                PlayerPrefs.SetString("names" + x, names[x]);
-            }
-            for (int x = 0; x < score.Length; x++)
-            {
-                PlayerPrefs.SetInt("score" + x, score[x]);
-            }
-        
-
-
-
-        
+        for (int x = 0; x < tacos.Length; x++)
+        {
+            PlayerPrefs.SetInt("tacos" + x, tacos [x]);
+        }
+        for (int x = 0; x < time.Length; x++)
+        {
+            PlayerPrefs.SetString("time" + x, time[x]);
+        }
+        for (int x = 0; x < tacos.Length; x++)
+        {
+            PlayerPrefs.SetInt("deaths" + x, deaths[x]);
+        }
+        for (int x = 0; x < names.Length; x++)
+        {
+            PlayerPrefs.SetString("names" + x, names[x]);
+        }
+        for (int x = 0; x < score.Length; x++)
+        {
+            PlayerPrefs.SetInt("score" + x, score[x]);
+        }
     }
 
     public void SubmitScore(string name, int taco, int _deaths, string _time, int _score)
@@ -120,7 +110,7 @@ public class leaderboard1 : MonoBehaviour {
         } 
         else
         {
-            save.text = "Sorry, not a new highscore. try again";
+            save.text = "Not a highscore";
         }
 
 
@@ -183,16 +173,16 @@ public class leaderboard1 : MonoBehaviour {
                     switch (names[x].Length)
                     {
                         case 7:
-                            highscores[x].text = names[x] + "      " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
+                            highscores[x].text = names[x] + "   " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
                 "      " + deaths[x].ToString();
                             break;
                         case 6:
-                            highscores[x].text = names[x] + "       " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
+                            highscores[x].text = names[x] + "     " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
                 "      " + deaths[x].ToString(); 
                             
                             break; 
                         case 5:
-                            highscores[x].text = names[x] + "        " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
+                            highscores[x].text = names[x] + "       " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
                 "      " + deaths[x].ToString();
                             break;
                         case 4:
@@ -200,15 +190,15 @@ public class leaderboard1 : MonoBehaviour {
                 "      " + deaths[x].ToString();
                             break;
                         case 3:
-                            highscores[x].text = names[x] + "          " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
-                "      " + deaths[x].ToString();
-                            break;
-                        case 2:
                             highscores[x].text = names[x] + "           " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
                 "      " + deaths[x].ToString();
                             break;
+                        case 2:
+                            highscores[x].text = names[x] + "             " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
+                "      " + deaths[x].ToString();
+                            break;
                         case 1:
-                            highscores[x].text = names[x] + "            " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
+                            highscores[x].text = names[x] + "               " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
                 "      " + deaths[x].ToString();
                             break;
                         default:
