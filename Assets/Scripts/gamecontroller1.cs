@@ -59,15 +59,19 @@ public class gamecontroller1 : MonoBehaviour {
     {
         Scene currentScene = SceneManager.GetActiveScene();
         if (currentScene.name == "Scoreboard")
-        { 
+        {
             GetComponent<leaderboard1>().SubmitScore(Name.text, taco, death, time, score);
+            myButton.SetActive(false);
+            myInput.SetActive(false);
+            myText.SetActive(false);
         }
         if (currentScene.name == "Scoreboard Easy")
         {
             GetComponent<leaderboardEasy>().SubmitScore(Name.text, taco, death, time, score);
+            myButton.SetActive(false);
+            myInput.SetActive(false);
+            myText.SetActive(false);
         }
-        myButton.SetActive(false);
-        myInput.SetActive(false);
-        myText.SetActive(false);
+        
     }
 }
