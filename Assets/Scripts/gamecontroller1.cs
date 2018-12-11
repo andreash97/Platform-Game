@@ -25,11 +25,11 @@ public class gamecontroller1 : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
+        Name.characterLimit = 7;
         Cursor.visible = true;
         taco = LevelManager.tacosCollected;
         death = LevelManager.lives;
-        time = LevelManager.timespend;
+        time = LevelManager.timespend; 
         timemath = Mathf.RoundToInt(LevelManager.time);
         scoremath = ((taco*100) / (timemath/5));
         score = Mathf.RoundToInt(scoremath);
@@ -57,7 +57,15 @@ public class gamecontroller1 : MonoBehaviour {
 
     public void Submit()
     {
-        GetComponent<leaderboard1>().SubmitScore(Name.text, taco, death, time, score);
+        Scene currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name == "Scoreboard")
+        { 
+            GetComponent<leaderboard1>().SubmitScore(Name.text, taco, death, time, score);
+        }
+        if (currentScene.name == "Scoreboard Easy")
+        {
+            GetComponent<leaderboardEasy>().SubmitScore(Name.text, taco, death, time, score);
+        }
         myButton.SetActive(false);
         myInput.SetActive(false);
         myText.SetActive(false);

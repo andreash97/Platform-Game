@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class leaderboard1 : MonoBehaviour {
+public class leaderboardEasy : MonoBehaviour
+{
 
     public Text[] highscores;
     public Text save;
@@ -13,80 +14,82 @@ public class leaderboard1 : MonoBehaviour {
     int[] score;
     string[] names;
     public static int submissions;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
 
-        
+
         score = new int[highscores.Length];
         tacos = new int[highscores.Length];
         time = new string[highscores.Length];
         deaths = new int[highscores.Length];
         names = new string[highscores.Length];
 
-        for (int x=0; x<tacos.Length; x++)
+        for (int x = 0; x < tacos.Length; x++)
         {
-            tacos[x] = PlayerPrefs.GetInt("tacos" + x);
+            tacos[x] = PlayerPrefs.GetInt("tacoseasy" + x);
         }
         for (int x = 0; x < time.Length; x++)
         {
-            time[x] = PlayerPrefs.GetString("time" + x);
+            time[x] = PlayerPrefs.GetString("timeeasy" + x);
         }
         for (int x = 0; x < deaths.Length; x++)
         {
-            deaths[x] = PlayerPrefs.GetInt("deaths" + x);
+            deaths[x] = PlayerPrefs.GetInt("deathseasy" + x);
         }
         for (int x = 0; x < names.Length; x++)
         {
-            names[x] = PlayerPrefs.GetString("names" + x);
+            names[x] = PlayerPrefs.GetString("nameseasy" + x);
         }
         for (int x = 0; x < score.Length; x++)
-        { 
-            score[x] = PlayerPrefs.GetInt("score" + x);
+        {
+            score[x] = PlayerPrefs.GetInt("scoreeasy" + x);
         }
 
         drawscores();
     }
-	
-    void savescores() {
+
+    void savescores()
+    {
 
         for (int x = 0; x < tacos.Length; x++)
         {
-            PlayerPrefs.SetInt("tacos" + x, tacos [x]);
+            PlayerPrefs.SetInt("tacoseasy" + x, tacos[x]);
         }
         for (int x = 0; x < time.Length; x++)
         {
-            PlayerPrefs.SetString("time" + x, time[x]);
+            PlayerPrefs.SetString("timeeasy" + x, time[x]);
         }
         for (int x = 0; x < tacos.Length; x++)
         {
-            PlayerPrefs.SetInt("deaths" + x, deaths[x]);
+            PlayerPrefs.SetInt("deathseasy" + x, deaths[x]);
         }
         for (int x = 0; x < names.Length; x++)
         {
-            PlayerPrefs.SetString("names" + x, names[x]);
+            PlayerPrefs.SetString("nameseasy" + x, names[x]);
         }
         for (int x = 0; x < score.Length; x++)
         {
-            PlayerPrefs.SetInt("score" + x, score[x]);
+            PlayerPrefs.SetInt("scoreeasy" + x, score[x]);
         }
     }
 
     public void SubmitScore(string name, int taco, int _deaths, string _time, int _score)
     {
 
-        
 
-        for(int x = 0; x<highscores.Length; x++)
+
+        for (int x = 0; x < highscores.Length; x++)
         {
 
             if (!string.IsNullOrEmpty(names[x]))
             {
 
                 submissions++;
-                
+
             }
 
-            
+
         }
 
         if (submissions < highscores.Length)
@@ -96,7 +99,7 @@ public class leaderboard1 : MonoBehaviour {
             tacos[submissions] = taco;
             deaths[submissions] = _deaths;
             score[submissions] = _score;
-            time[submissions] = _time; 
+            time[submissions] = _time;
         }
         else if (score[4] < _score)
         {
@@ -107,7 +110,7 @@ public class leaderboard1 : MonoBehaviour {
             deaths[4] = _deaths;
             time[4] = _time;
 
-        } 
+        }
         else
         {
             save.text = "Sorry, not a new highscore. try again";
@@ -126,7 +129,7 @@ public class leaderboard1 : MonoBehaviour {
                 if (score[i] < score[i + 1])
                 {
 
-                    temp = score[i+1];
+                    temp = score[i + 1];
                     score[i + 1] = score[i];
                     score[i] = temp;
 
@@ -157,7 +160,7 @@ public class leaderboard1 : MonoBehaviour {
 
     }
 
-  
+
 
     void drawscores()
     {
@@ -166,9 +169,9 @@ public class leaderboard1 : MonoBehaviour {
         {
             if (!string.IsNullOrEmpty(names[x]))
             {
-                
-                    
-                    if(names[x].Length <= 7)
+
+
+                if (names[x].Length <= 7)
                 {
                     switch (names[x].Length)
                     {
@@ -178,9 +181,9 @@ public class leaderboard1 : MonoBehaviour {
                             break;
                         case 6:
                             highscores[x].text = names[x] + "       " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
-                "      " + deaths[x].ToString(); 
-                            
-                            break; 
+                "      " + deaths[x].ToString();
+
+                            break;
                         case 5:
                             highscores[x].text = names[x] + "        " + score[x] + "      " + tacos[x].ToString() + "      " + time[x].ToString() +
                 "      " + deaths[x].ToString();
@@ -202,24 +205,25 @@ public class leaderboard1 : MonoBehaviour {
                 "      " + deaths[x].ToString();
                             break;
                         default:
-                           Debug.Log("virker ikke");
+                            Debug.Log("virker ikke");
                             break;
                     }
                 }
 
 
-                    
+
             }
             else
                 highscores[x].text = " ";
         }
-     
-    
+
+
 
 
     }
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }
