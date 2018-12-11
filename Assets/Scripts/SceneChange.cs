@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour
 {
-    private float delayBeforLoading = 5f;
+    private float delayBeforLoading = 10f;
     private float timeElapsed;
     public Animator animator;
 
